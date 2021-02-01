@@ -36,7 +36,8 @@ namespace JennyCasey_Assign2
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ManagementFuncBox = new System.Windows.Forms.GroupBox();
+            this.SearchGuild = new System.Windows.Forms.Label();
             this.SearchPlayer = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -45,10 +46,9 @@ namespace JennyCasey_Assign2
             this.JoinGuildButton = new System.Windows.Forms.Button();
             this.DisbandGuildButton = new System.Windows.Forms.Button();
             this.GuildRosterButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.SearchGuild = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.CreatePlayerBox = new System.Windows.Forms.GroupBox();
+            this.CreateGuildBox = new System.Windows.Forms.GroupBox();
+            this.ManagementFuncBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -121,24 +121,35 @@ namespace JennyCasey_Assign2
             this.label4.TabIndex = 6;
             this.label4.Text = "Guilds";
             // 
-            // groupBox1
+            // ManagementFuncBox
             // 
-            this.groupBox1.Controls.Add(this.SearchGuild);
-            this.groupBox1.Controls.Add(this.SearchPlayer);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.SearchCriteriaButton);
-            this.groupBox1.Controls.Add(this.LeaveGuildButton);
-            this.groupBox1.Controls.Add(this.JoinGuildButton);
-            this.groupBox1.Controls.Add(this.DisbandGuildButton);
-            this.groupBox1.Controls.Add(this.GuildRosterButton);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 56);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(633, 144);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Management Functions";
+            this.ManagementFuncBox.Controls.Add(this.SearchGuild);
+            this.ManagementFuncBox.Controls.Add(this.SearchPlayer);
+            this.ManagementFuncBox.Controls.Add(this.textBox2);
+            this.ManagementFuncBox.Controls.Add(this.textBox1);
+            this.ManagementFuncBox.Controls.Add(this.SearchCriteriaButton);
+            this.ManagementFuncBox.Controls.Add(this.LeaveGuildButton);
+            this.ManagementFuncBox.Controls.Add(this.JoinGuildButton);
+            this.ManagementFuncBox.Controls.Add(this.DisbandGuildButton);
+            this.ManagementFuncBox.Controls.Add(this.GuildRosterButton);
+            this.ManagementFuncBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ManagementFuncBox.Location = new System.Drawing.Point(12, 56);
+            this.ManagementFuncBox.Name = "ManagementFuncBox";
+            this.ManagementFuncBox.Size = new System.Drawing.Size(633, 144);
+            this.ManagementFuncBox.TabIndex = 7;
+            this.ManagementFuncBox.TabStop = false;
+            this.ManagementFuncBox.Text = "Management Functions";
+            // 
+            // SearchGuild
+            // 
+            this.SearchGuild.AutoSize = true;
+            this.SearchGuild.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchGuild.ForeColor = System.Drawing.Color.Black;
+            this.SearchGuild.Location = new System.Drawing.Point(381, 93);
+            this.SearchGuild.Name = "SearchGuild";
+            this.SearchGuild.Size = new System.Drawing.Size(165, 17);
+            this.SearchGuild.TabIndex = 8;
+            this.SearchGuild.Text = "Search Guild (by Server)";
             // 
             // SearchPlayer
             // 
@@ -220,36 +231,25 @@ namespace JennyCasey_Assign2
             this.GuildRosterButton.Text = "Print Guild Roster";
             this.GuildRosterButton.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // CreatePlayerBox
             // 
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 206);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(633, 136);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Create New Player";
+            this.CreatePlayerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatePlayerBox.Location = new System.Drawing.Point(12, 206);
+            this.CreatePlayerBox.Name = "CreatePlayerBox";
+            this.CreatePlayerBox.Size = new System.Drawing.Size(633, 136);
+            this.CreatePlayerBox.TabIndex = 8;
+            this.CreatePlayerBox.TabStop = false;
+            this.CreatePlayerBox.Text = "Create New Player";
             // 
-            // groupBox3
+            // CreateGuildBox
             // 
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 348);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(633, 139);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Create New Guild";
-            // 
-            // SearchGuild
-            // 
-            this.SearchGuild.AutoSize = true;
-            this.SearchGuild.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchGuild.ForeColor = System.Drawing.Color.Black;
-            this.SearchGuild.Location = new System.Drawing.Point(381, 93);
-            this.SearchGuild.Name = "SearchGuild";
-            this.SearchGuild.Size = new System.Drawing.Size(165, 17);
-            this.SearchGuild.TabIndex = 8;
-            this.SearchGuild.Text = "Search Guild (by Server)";
+            this.CreateGuildBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateGuildBox.Location = new System.Drawing.Point(12, 348);
+            this.CreateGuildBox.Name = "CreateGuildBox";
+            this.CreateGuildBox.Size = new System.Drawing.Size(633, 139);
+            this.CreateGuildBox.TabIndex = 9;
+            this.CreateGuildBox.TabStop = false;
+            this.CreateGuildBox.Text = "Create New Guild";
             // 
             // Form1
             // 
@@ -257,9 +257,9 @@ namespace JennyCasey_Assign2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1239, 670);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.CreateGuildBox);
+            this.Controls.Add(this.CreatePlayerBox);
+            this.Controls.Add(this.ManagementFuncBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listBox2);
@@ -270,8 +270,8 @@ namespace JennyCasey_Assign2
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.ManagementFuncBox.ResumeLayout(false);
+            this.ManagementFuncBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,9 +286,9 @@ namespace JennyCasey_Assign2
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox ManagementFuncBox;
+        private System.Windows.Forms.GroupBox CreatePlayerBox;
+        private System.Windows.Forms.GroupBox CreateGuildBox;
         private System.Windows.Forms.Button SearchCriteriaButton;
         private System.Windows.Forms.Button LeaveGuildButton;
         private System.Windows.Forms.Button JoinGuildButton;
