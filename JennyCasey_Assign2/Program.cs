@@ -17,6 +17,12 @@ namespace JennyCasey_Assign2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            Player player1 = new Player();
+
+            var players = player1.BuildPlayerDictionary();
+
+            player1.SortPlayerNames(players);
         }
     }
 }
