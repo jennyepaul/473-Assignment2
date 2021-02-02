@@ -30,10 +30,10 @@ namespace JennyCasey_Assign2
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.outputBox = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Playerlistbox = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.guildListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ManagementFuncBox = new System.Windows.Forms.GroupBox();
@@ -62,13 +62,13 @@ namespace JennyCasey_Assign2
             this.label1.TabIndex = 0;
             this.label1.Text = "Player/Guild Management System";
             // 
-            // richTextBox1
+            // outputBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(25, 518);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1189, 130);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.outputBox.Location = new System.Drawing.Point(25, 518);
+            this.outputBox.Name = "outputBox";
+            this.outputBox.Size = new System.Drawing.Size(1189, 130);
+            this.outputBox.TabIndex = 1;
+            this.outputBox.Text = "";
             // 
             // label2
             // 
@@ -89,16 +89,15 @@ namespace JennyCasey_Assign2
             this.Playerlistbox.Name = "Playerlistbox";
             this.Playerlistbox.Size = new System.Drawing.Size(253, 388);
             this.Playerlistbox.TabIndex = 3;
-            this.Playerlistbox.Click += new System.EventHandler(this.Playerlistbox_Click_1);
             // 
-            // listBox2
+            // guildListBox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(952, 92);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(262, 388);
-            this.listBox2.TabIndex = 4;
+            this.guildListBox.FormattingEnabled = true;
+            this.guildListBox.ItemHeight = 16;
+            this.guildListBox.Location = new System.Drawing.Point(952, 92);
+            this.guildListBox.Name = "guildListBox";
+            this.guildListBox.Size = new System.Drawing.Size(262, 388);
+            this.guildListBox.TabIndex = 4;
             // 
             // label3
             // 
@@ -176,6 +175,8 @@ namespace JennyCasey_Assign2
             this.SearchPlayer_Textbox.Name = "SearchPlayer_Textbox";
             this.SearchPlayer_Textbox.Size = new System.Drawing.Size(192, 27);
             this.SearchPlayer_Textbox.TabIndex = 5;
+            this.SearchPlayer_Textbox.Click += new System.EventHandler(this.SearchPlayer_Textbox_Click);
+            this.SearchPlayer_Textbox.TextChanged += new System.EventHandler(this.SearchPlayer_Textbox_TextChanged);
             // 
             // SearchCriteriaButton
             // 
@@ -199,6 +200,7 @@ namespace JennyCasey_Assign2
             this.LeaveGuildButton.TabIndex = 3;
             this.LeaveGuildButton.Text = "Leave Guild";
             this.LeaveGuildButton.UseVisualStyleBackColor = true;
+            this.LeaveGuildButton.Click += new System.EventHandler(this.LeaveGuildButton_Click);
             // 
             // JoinGuildButton
             // 
@@ -210,6 +212,7 @@ namespace JennyCasey_Assign2
             this.JoinGuildButton.TabIndex = 2;
             this.JoinGuildButton.Text = "Join Guild";
             this.JoinGuildButton.UseVisualStyleBackColor = true;
+            this.JoinGuildButton.Click += new System.EventHandler(this.JoinGuildButton_Click);
             // 
             // DisbandGuildButton
             // 
@@ -264,14 +267,15 @@ namespace JennyCasey_Assign2
             this.Controls.Add(this.ManagementFuncBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.guildListBox);
             this.Controls.Add(this.Playerlistbox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.outputBox);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ManagementFuncBox.ResumeLayout(false);
             this.ManagementFuncBox.PerformLayout();
             this.ResumeLayout(false);
@@ -282,10 +286,10 @@ namespace JennyCasey_Assign2
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox outputBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox Playerlistbox;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox guildListBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox ManagementFuncBox;

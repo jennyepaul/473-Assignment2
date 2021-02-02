@@ -12,63 +12,23 @@ namespace JennyCasey_Assign2
 {
     public partial class Form1 : Form
     {
+        private Dictionary<uint, Player> playerDictionary;
+        private Dictionary<uint, string> guildDictionary;
+        List<Player> players = new List<Player>();
+        List<string> guilds = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
+
+            //create a new object and build the two dictionaries
+            Player newplayer = new Player();
+            playerDictionary = newplayer.BuildPlayerDictionary();
+            guildDictionary = newplayer.BuildGuildDictionary();
+
         }
 
-
-        /* private void Role_Dropdown_Click(object sender, EventArgs e)
-         {
-             Player player1 = new Player();
-             var players = player1.BuildPlayerDictionary();
-
-             foreach (var i in players)
-             {
-                 Role_Dropdown.Items.Add(i.Value.Name);
-             }
-         }
-
-         private void Race_Dropdown_Click(object sender, EventArgs e)
-         {
-             Player player1 = new Player();
-             var players = player1.BuildPlayerDictionary();
-
-             foreach (var i in players)
-             {
-                 Race_Dropdown.Items.Add(i.Value.Race);
-             }
-         }
-
-         private void Class_Dropdown_Click(object sender, EventArgs e)
-         {
-             Player player1 = new Player();
-             var players = player1.BuildPlayerDictionary();
-
-             foreach (var i in players)
-             {
-                 Class_Dropdown.Items.Add(i.Value.Classes);
-             }
-         }
-
-         private void AddPlayer_Button_Click(object sender, EventArgs e)
-         {
-             if (this.Name_Textbox.Text != "") // && this.Role_Dropdown.SelectedIndex == -1)
-             {
-                 string to_add = this.Name_Textbox.Text + "\t" + this.Role_Dropdown.SelectedItem
-                     + "\t" + "0";
-                 listBox1.Items.Add(to_add);
-                 this.Name_Textbox.Focus();
-                 this.Name_Textbox.Clear();
-             }
-             else
-             {
-                 MessageBox.Show("Please enter a Name and Role to add.", "Error",
-                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                 this.Name_Textbox.Focus();
-             }
-         }*/
-
+        //confused what form object this is??
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
@@ -95,16 +55,78 @@ namespace JennyCasey_Assign2
             }
         }
 
-        private void Playerlistbox_Click_1(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //set the data source for the player and guild list box
+            foreach(var i in playerDictionary)
+            {
+                players.Add(i.Value);
+            }
+            foreach(var m in guildDictionary)
+            {
+                guilds.Add(m.Value);
+            }
+            Playerlistbox.DataSource = players;
+            guildListBox.DataSource = guilds;
+            
+        }
+        private void LeaveGuildButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
-            var players = player1.BuildPlayerDictionary();
 
-            Playerlistbox.Items.Clear();
-
-            foreach (var i in players)
+            //check that a player and guild has been selected
+            if(Playerlistbox.SelectedIndex == -1)
             {
-                Playerlistbox.Items.Add(string.Format("{0} \t {1} \t {2}", i.Value.Name.PadRight(10), i.Value.Race, i.Value.Level));
+                outputBox.Text = "No player selected";
+                return;
+            }
+            else
+            {
+                //parse the info
+                string[] playerText = Playerlistbox.Text.Split('\t');
+
+                //pass the player dictionary and the player name to the leave guild function
+                player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
+                outputBox.Text = "Player successfully left guild!";
+                
+            }
+        }
+        private void JoinGuildButton_Click(object sender, EventArgs e)
+        {
+            Player player1 = new Player();
+            uint guildID;
+            // check that a player and guild has been selected
+            if ((Playerlistbox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
+            {
+                outputBox.Text = "No player and guild selected";
+                return;
+            }
+            else
+            {
+                //parse the info
+                string[] playerText = Playerlistbox.Text.Split('\t');
+                string[] guildText = guildListBox.Text.Split('\t');
+
+                //parse the guild ID to a uint, not a string
+                uint.TryParse(guildText[0], out guildID );
+
+                //pass the player dictionary, player name, and guildID to function to join a guild
+                player1.PlayerJoinGuild(playerDictionary, playerText[1], guildID);
+                outputBox.Text = "Player successfully joined the guild!";
+            }
+        }
+
+        private void SearchPlayer_Textbox_TextChanged(object sender, EventArgs e)
+        {
+            outputBox.Text = " ";
+            string playerName = SearchPlayer_Textbox.Text;
+
+            foreach(var i in playerDictionary)
+            {
+                if(i.Value.Name == playerName)
+                {
+                    outputBox.Text = (i.Value.Name);                  
+                }
             }
         }
     }
