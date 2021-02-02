@@ -52,16 +52,6 @@ namespace JennyCasey_Assign2
             }
         }
 
-        private void JoinGuildButton_Click(object sender, EventArgs e)
-        {
-            //make sure a player has been selected
-            //make sure a guild has been selected
-            //parse the two selectedItem strings to capture the name
-            //info necessary to activate the assignment 1 code
-            //call that function from assign1
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             //set the data source for the player and guild list box
@@ -76,6 +66,41 @@ namespace JennyCasey_Assign2
             Playerlistbox.DataSource = players;
             guildListBox.DataSource = guilds;
             
+        }
+        private void LeaveGuildButton_Click(object sender, EventArgs e)
+        {
+            Player player1 = new Player();
+
+            //check that a player and guild has been selected
+            if(Playerlistbox.SelectedIndex == -1)
+            {
+                outputBox.Text = "No player selected";
+                return;
+            }
+            else
+            {
+                //parse the info
+                string[] playerText = Playerlistbox.Text.Split('\t');
+
+                //pass the player dictionary and the player name to the leave guild function
+                player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
+                outputBox.Text = "Player successfully left guild!";
+                
+            }
+        }
+
+        private void SearchPlayer_Textbox_TextChanged(object sender, EventArgs e)
+        {
+            outputBox.Text = " ";
+            string playerName = SearchPlayer_Textbox.Text;
+
+            foreach(var i in playerDictionary)
+            {
+                if(i.Value.Name == playerName)
+                {
+                    outputBox.Text = (i.Value.Name);                  
+                }
+            }
         }
     }
 }

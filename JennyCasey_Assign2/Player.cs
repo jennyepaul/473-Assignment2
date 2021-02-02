@@ -302,21 +302,20 @@ namespace JennyCasey_Assign2
              return 0;
          }*/
 
-        public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary)
+        public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
         {
-            Console.Write("Enter the player name: ");
-            string playerName2 = Console.ReadLine();
+           
             bool playerIsFound = false;
 
             //search through the players dictionary for the username entered
             foreach (var player in dictionary)
             {
                 //once we find it, set the flag, then set the guild to 0 since we want to leave
-                if (player.Value.Name == playerName2)
+                if (player.Value.Name == playerName)
                 {
                     playerIsFound = true;
                     dictionary[player.Key].GuildID = 0;
-                    Console.WriteLine("{0} has left their Guild", playerName2);
+                    Console.WriteLine("{0} has left their Guild", playerName);
 
                 }
             }
