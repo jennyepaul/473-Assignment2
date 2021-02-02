@@ -210,6 +210,7 @@ namespace JennyCasey_Assign2
             this.JoinGuildButton.TabIndex = 2;
             this.JoinGuildButton.Text = "Join Guild";
             this.JoinGuildButton.UseVisualStyleBackColor = true;
+            this.JoinGuildButton.Click += new System.EventHandler(this.JoinGuildButton_Click);
             // 
             // DisbandGuildButton
             // 
