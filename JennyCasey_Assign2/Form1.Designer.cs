@@ -175,6 +175,7 @@ namespace JennyCasey_Assign2
             this.SearchPlayer_Textbox.Name = "SearchPlayer_Textbox";
             this.SearchPlayer_Textbox.Size = new System.Drawing.Size(192, 27);
             this.SearchPlayer_Textbox.TabIndex = 5;
+            this.SearchPlayer_Textbox.Click += new System.EventHandler(this.SearchPlayer_Textbox_Click);
             this.SearchPlayer_Textbox.TextChanged += new System.EventHandler(this.SearchPlayer_Textbox_TextChanged);
             // 
             // SearchCriteriaButton
@@ -211,6 +212,7 @@ namespace JennyCasey_Assign2
             this.JoinGuildButton.TabIndex = 2;
             this.JoinGuildButton.Text = "Join Guild";
             this.JoinGuildButton.UseVisualStyleBackColor = true;
+            this.JoinGuildButton.Click += new System.EventHandler(this.JoinGuildButton_Click);
             // 
             // DisbandGuildButton
             // 

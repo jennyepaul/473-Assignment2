@@ -324,33 +324,19 @@ namespace JennyCasey_Assign2
                 Console.WriteLine("Player not found");
             }
         }
-        /*  public void PlayerJoinGuild(Dictionary<uint, Player> dictionary)
+          public void PlayerJoinGuild(Dictionary<uint, Player> dictionary, string playerName, uint guildID)
           {
-              bool playerIsFound = false;
-              Console.Write("Enter the player name: ");
-              string playerName3 = Console.ReadLine();
-              Console.Write("Enter the guild they will join: ");
-              string guildToJoin = Console.ReadLine();
               //search for the name that the user entered in the players dictionary
               foreach (var player in dictionary)
               {
-                  if (player.Value.Name == playerName3)
-                  {
-                      playerIsFound = true;
-                      //if we found it then call the FindGuildId method to find out the ID of
-                      //the guild name entered
-                      uint newGuildId = dictionary[player.Key].FindGuildId(guildToJoin);
+                  if (player.Value.Name == playerName)
+                  {                     
                       //set the guild to the guild ID and print out that player joined
-                      dictionary[player.Key].GuildID = newGuildId;
-                      Console.WriteLine("{0} has joined {1}!", playerName3, guildToJoin);
+                      dictionary[player.Key].GuildID = guildID;
                   }
               }
-              if (playerIsFound == false)
-              {
-                  Console.WriteLine("Unknown player");
-              }
           }
-          
+          /*
          public void AwardExperience(Dictionary<uint, Player> dictionary)
          {
              bool playerIsFound = false;

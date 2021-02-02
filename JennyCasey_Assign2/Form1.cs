@@ -20,12 +20,15 @@ namespace JennyCasey_Assign2
         public Form1()
         {
             InitializeComponent();
+
+            //create a new object and build the two dictionaries
             Player newplayer = new Player();
             playerDictionary = newplayer.BuildPlayerDictionary();
             guildDictionary = newplayer.BuildGuildDictionary();
 
         }
 
+        //confused what form object this is??
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
@@ -86,6 +89,30 @@ namespace JennyCasey_Assign2
                 player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
                 outputBox.Text = "Player successfully left guild!";
                 
+            }
+        }
+        private void JoinGuildButton_Click(object sender, EventArgs e)
+        {
+            Player player1 = new Player();
+            uint guildID;
+            // check that a player and guild has been selected
+            if ((Playerlistbox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
+            {
+                outputBox.Text = "No player and guild selected";
+                return;
+            }
+            else
+            {
+                //parse the info
+                string[] playerText = Playerlistbox.Text.Split('\t');
+                string[] guildText = guildListBox.Text.Split('\t');
+
+                //parse the guild ID to a uint, not a string
+                uint.TryParse(guildText[0], out guildID );
+
+                //pass the player dictionary, player name, and guildID to function to join a guild
+                player1.PlayerJoinGuild(playerDictionary, playerText[1], guildID);
+                outputBox.Text = "Player successfully joined the guild!";
             }
         }
 
