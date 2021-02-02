@@ -30,7 +30,7 @@ namespace JennyCasey_Assign2
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.outputBox = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Playerlistbox = new System.Windows.Forms.ListBox();
             this.guildListBox = new System.Windows.Forms.ListBox();
@@ -62,13 +62,13 @@ namespace JennyCasey_Assign2
             this.label1.TabIndex = 0;
             this.label1.Text = "Player/Guild Management System";
             // 
-            // richTextBox1
+            // outputBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(25, 518);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1189, 130);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.outputBox.Location = new System.Drawing.Point(25, 518);
+            this.outputBox.Name = "outputBox";
+            this.outputBox.Size = new System.Drawing.Size(1189, 130);
+            this.outputBox.TabIndex = 1;
+            this.outputBox.Text = "";
             // 
             // label2
             // 
@@ -267,7 +267,7 @@ namespace JennyCasey_Assign2
             this.Controls.Add(this.guildListBox);
             this.Controls.Add(this.Playerlistbox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.outputBox);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
@@ -283,7 +283,7 @@ namespace JennyCasey_Assign2
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox outputBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox Playerlistbox;
         private System.Windows.Forms.ListBox guildListBox;

@@ -20,7 +20,10 @@ namespace JennyCasey_Assign2
         public Form1()
         {
             InitializeComponent();
-           
+            Player newplayer = new Player();
+            playerDictionary = newplayer.BuildPlayerDictionary();
+            guildDictionary = newplayer.BuildGuildDictionary();
+
         }
 
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
@@ -61,16 +64,11 @@ namespace JennyCasey_Assign2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //creating the dictionary, then storing values in a list to set
-            //as the playerListBox source
-            Player newplayer = new Player();
-            playerDictionary = newplayer.BuildPlayerDictionary();
+            //set the data source for the player and guild list box
             foreach(var i in playerDictionary)
             {
                 players.Add(i.Value);
             }
-
-            guildDictionary = newplayer.BuildGuildDictionary();
             foreach(var m in guildDictionary)
             {
                 guilds.Add(m.Value);
