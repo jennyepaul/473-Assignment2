@@ -12,10 +12,17 @@ namespace JennyCasey_Assign2
 {
     public partial class Form1 : Form
     {
+        private Dictionary<uint, Player> playerDictionary;
+        private Dictionary<uint, string> guildDictionary;
+        List<Player> players = new List<Player>();
+        List<string> guilds = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
+           
         }
+
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
@@ -50,6 +57,27 @@ namespace JennyCasey_Assign2
             //info necessary to activate the assignment 1 code
             //call that function from assign1
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //creating the dictionary, then storing values in a list to set
+            //as the playerListBox source
+            Player newplayer = new Player();
+            playerDictionary = newplayer.BuildPlayerDictionary();
+            foreach(var i in playerDictionary)
+            {
+                players.Add(i.Value);
+            }
+
+            guildDictionary = newplayer.BuildGuildDictionary();
+            foreach(var m in guildDictionary)
+            {
+                guilds.Add(m.Value);
+            }
+            Playerlistbox.DataSource = players;
+            guildListBox.DataSource = guilds;
+            
         }
     }
 }

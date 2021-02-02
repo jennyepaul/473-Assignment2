@@ -33,7 +33,7 @@ namespace JennyCasey_Assign2
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Playerlistbox = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.guildListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ManagementFuncBox = new System.Windows.Forms.GroupBox();
@@ -89,16 +89,15 @@ namespace JennyCasey_Assign2
             this.Playerlistbox.Name = "Playerlistbox";
             this.Playerlistbox.Size = new System.Drawing.Size(253, 388);
             this.Playerlistbox.TabIndex = 3;
-            this.Playerlistbox.Click += new System.EventHandler(this.Playerlistbox_Click_1);
             // 
-            // listBox2
+            // guildListBox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(952, 92);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(262, 388);
-            this.listBox2.TabIndex = 4;
+            this.guildListBox.FormattingEnabled = true;
+            this.guildListBox.ItemHeight = 16;
+            this.guildListBox.Location = new System.Drawing.Point(952, 92);
+            this.guildListBox.Name = "guildListBox";
+            this.guildListBox.Size = new System.Drawing.Size(262, 388);
+            this.guildListBox.TabIndex = 4;
             // 
             // label3
             // 
@@ -265,7 +264,7 @@ namespace JennyCasey_Assign2
             this.Controls.Add(this.ManagementFuncBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.guildListBox);
             this.Controls.Add(this.Playerlistbox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);
@@ -273,6 +272,7 @@ namespace JennyCasey_Assign2
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ManagementFuncBox.ResumeLayout(false);
             this.ManagementFuncBox.PerformLayout();
             this.ResumeLayout(false);
@@ -286,7 +286,7 @@ namespace JennyCasey_Assign2
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox Playerlistbox;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox guildListBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox ManagementFuncBox;
