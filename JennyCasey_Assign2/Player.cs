@@ -251,35 +251,6 @@ namespace JennyCasey_Assign2
              }
              return guilds;
          }
-
-        /*public string FindGuildName(uint ID)
-        {
-            string name;
-            var guildDictionary = BuildGuildDictionary();
-            //search the guild dictionary for the key and return the name
-            foreach (var keyValue in guildDictionary)
-            {
-                if (keyValue.Key == guildId)
-                {
-                    name = keyValue.Value;
-                    return name;
-                }
-            }
-            return "Guild Not found";
-        }*/
-        /* public uint FindGuildId(string guildNameToFind)
-         {
-             var guildDictionary = BuildGuildDictionary();
-             foreach (var keyValue in guildDictionary)
-             {
-                 if (keyValue.Value == guildNameToFind)
-                 {
-                     return keyValue.Key;
-                 }
-             }
-             return 0;
-         }*/
-
         public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
         {
            
@@ -293,14 +264,9 @@ namespace JennyCasey_Assign2
                 {
                     playerIsFound = true;
                     dictionary[player.Key].GuildID = 0;
-                    Console.WriteLine("{0} has left their Guild", playerName);
-
                 }
             }
-            if (playerIsFound == false)
-            {
-                Console.WriteLine("Player not found");
-            }
+           
         }
           public void PlayerJoinGuild(Dictionary<uint, Player> dictionary, string playerName, uint guildID)
           {
