@@ -13,6 +13,7 @@ namespace JennyCasey_Assign2
 {
     public enum Race { Orc, Troll, Tauren, Forsaken };
     public enum Class { Warrior, Mage, Druid, Priest, Warlock, Rogue, Paladin, Hunter, Shaman };
+
     /**************************************************************************************************************************
      * Class - Player
      * 
@@ -58,10 +59,7 @@ namespace JennyCasey_Assign2
     public class Player //: IComparable
     {
         //constants for program
-        //private static uint MAX_LEVEL = 60;
-        //private static uint GEAR_SLOTS = 14;
-        //private static uint MAX_INVENTORY_SIZE = 20;
-
+        private static uint MAX_LEVEL = 60;
         private readonly uint id;
         private readonly string name;
         private readonly Race race;
@@ -154,7 +152,7 @@ namespace JennyCasey_Assign2
                 }
                 //if the current level OR the new level after experience is less than MAX_LEVEL
                 //we can add the experience
-                /*if ((Level < MAX_LEVEL) || (newLevel < MAX_LEVEL))
+                if ((Level < MAX_LEVEL) || (newLevel < MAX_LEVEL))
                 {
                     //only incremnt exp if it does not exceed MAX_LEVEL
                     exp += value;
@@ -163,9 +161,9 @@ namespace JennyCasey_Assign2
                 {
                     //if its >= MAX_LEVEL then we just return
                     Console.WriteLine("Player already at max level");
-                    exp += 0;*/
-                return;
-                //}
+                    exp += 0;
+                    return;
+                }
             }
         }
 
@@ -175,26 +173,6 @@ namespace JennyCasey_Assign2
             get { return guildId; }
             set { guildId = value; }
         }
-
-        //public int Length => gear.Length;
-
-        //declaring the indexer
-        //gear array with throw exception if out of range
-        /*public uint this[int index]
-        {
-            get
-            {
-                if(index >= 0 && index <= GEAR_SLOTS)
-                {
-                    return gear[index];
-                }
-                else 
-                {
-                    throw new Exception("Out of range");
-}
-                }
-            set { gear[index] = value; }           
-        }*/
 
         public Dictionary<uint, Player> BuildPlayerDictionary()
         {
