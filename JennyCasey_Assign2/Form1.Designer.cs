@@ -32,7 +32,7 @@ namespace JennyCasey_Assign2
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Playerlistbox = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@ namespace JennyCasey_Assign2
             this.SearchGuild = new System.Windows.Forms.Label();
             this.SearchPlayer = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SearchPlayer_Textbox = new System.Windows.Forms.TextBox();
             this.SearchCriteriaButton = new System.Windows.Forms.Button();
             this.LeaveGuildButton = new System.Windows.Forms.Button();
             this.JoinGuildButton = new System.Windows.Forms.Button();
@@ -81,14 +81,15 @@ namespace JennyCasey_Assign2
             this.label2.TabIndex = 2;
             this.label2.Text = "Output";
             // 
-            // listBox1
+            // Playerlistbox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(681, 90);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(253, 388);
-            this.listBox1.TabIndex = 3;
+            this.Playerlistbox.FormattingEnabled = true;
+            this.Playerlistbox.ItemHeight = 16;
+            this.Playerlistbox.Location = new System.Drawing.Point(681, 90);
+            this.Playerlistbox.Name = "Playerlistbox";
+            this.Playerlistbox.Size = new System.Drawing.Size(253, 388);
+            this.Playerlistbox.TabIndex = 3;
+            this.Playerlistbox.Click += new System.EventHandler(this.Playerlistbox_Click_1);
             // 
             // listBox2
             // 
@@ -126,7 +127,7 @@ namespace JennyCasey_Assign2
             this.ManagementFuncBox.Controls.Add(this.SearchGuild);
             this.ManagementFuncBox.Controls.Add(this.SearchPlayer);
             this.ManagementFuncBox.Controls.Add(this.textBox2);
-            this.ManagementFuncBox.Controls.Add(this.textBox1);
+            this.ManagementFuncBox.Controls.Add(this.SearchPlayer_Textbox);
             this.ManagementFuncBox.Controls.Add(this.SearchCriteriaButton);
             this.ManagementFuncBox.Controls.Add(this.LeaveGuildButton);
             this.ManagementFuncBox.Controls.Add(this.JoinGuildButton);
@@ -169,12 +170,12 @@ namespace JennyCasey_Assign2
             this.textBox2.Size = new System.Drawing.Size(192, 27);
             this.textBox2.TabIndex = 6;
             // 
-            // textBox1
+            // SearchPlayer_Textbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(379, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(192, 27);
-            this.textBox1.TabIndex = 5;
+            this.SearchPlayer_Textbox.Location = new System.Drawing.Point(379, 45);
+            this.SearchPlayer_Textbox.Name = "SearchPlayer_Textbox";
+            this.SearchPlayer_Textbox.Size = new System.Drawing.Size(192, 27);
+            this.SearchPlayer_Textbox.TabIndex = 5;
             // 
             // SearchCriteriaButton
             // 
@@ -186,6 +187,7 @@ namespace JennyCasey_Assign2
             this.SearchCriteriaButton.TabIndex = 4;
             this.SearchCriteriaButton.Text = "Apply Search Criteria";
             this.SearchCriteriaButton.UseVisualStyleBackColor = true;
+            this.SearchCriteriaButton.Click += new System.EventHandler(this.SearchCriteriaButton_Click);
             // 
             // LeaveGuildButton
             // 
@@ -263,7 +265,7 @@ namespace JennyCasey_Assign2
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.Playerlistbox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
@@ -282,7 +284,7 @@ namespace JennyCasey_Assign2
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox Playerlistbox;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -296,7 +298,7 @@ namespace JennyCasey_Assign2
         private System.Windows.Forms.Button GuildRosterButton;
         private System.Windows.Forms.Label SearchPlayer;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SearchPlayer_Textbox;
         private System.Windows.Forms.Label SearchGuild;
     }
 }
