@@ -254,15 +254,12 @@ namespace JennyCasey_Assign2
         public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
         {
            
-            bool playerIsFound = false;
-
             //search through the players dictionary for the username entered
             foreach (var player in dictionary)
             {
                 //once we find it, set the flag, then set the guild to 0 since we want to leave
                 if (player.Value.Name == playerName)
                 {
-                    playerIsFound = true;
                     dictionary[player.Key].GuildID = 0;
                 }
             }
