@@ -27,8 +27,23 @@ namespace JennyCasey_Assign2
             playerDictionary = newplayer.BuildPlayerDictionary();
             guildDictionary = newguild.BuildGuildDictionary();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+      
+            //populate the playerListBox and guildListBox
+            foreach (var i in playerDictionary)
+            {
+                playerListBox.Items.Add(i.Value);
+            }
+            foreach (var m in guildDictionary)
+            {
+                guildListBox.Items.Add(m.Value);
+            }
 
-        //confused what form object this is??
+            //sort the list boxes
+            playerListBox.Sorted = true;
+            guildListBox.Sorted = true;
+        }
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
             //clear both the list boxes, so we can repopulate
@@ -90,19 +105,6 @@ namespace JennyCasey_Assign2
             }
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //populate the playerListBox and guildListBox
-            foreach (var i in playerDictionary)
-            {
-                playerListBox.Items.Add(i.Value);
-            }
-            foreach (var m in guildDictionary)
-            {
-                guildListBox.Items.Add(m.Value);
-            }
-        }
         private void LeaveGuildButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
@@ -167,6 +169,32 @@ namespace JennyCasey_Assign2
             foreach (var guild in guildDictionary)
             {
                 guildListBox.Items.Add(guild.Value);
+            }
+        }
+
+        private void GuildRosterButton_Click(object sender, EventArgs e)
+        {
+            //clear the output box
+            outputBox.Clear();
+
+            foreach(var i in playerDictionary)
+            {
+                outputBox.Text = "hey hey";
+            }
+            
+        }
+
+        private void DisbandGuildButton_Click(object sender, EventArgs e)
+        {
+            uint guildIDToFind = ((Guild)guildListBox.SelectedItem).ID;
+            //select guild then click this button
+            //if the guild name selected is not null, then we must remove it from the list
+            //then set the guilID in the player dictionary where this was to 0 and remove it from the guild dictionary
+
+            //remove the selected item from the listbox
+            if (guildListBox.SelectedItem != null)
+            {
+                guildListBox.Items.Remove(guildListBox.SelectedItem);
             }
         }
     }

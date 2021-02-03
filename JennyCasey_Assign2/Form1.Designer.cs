@@ -88,14 +88,14 @@ namespace JennyCasey_Assign2
             this.playerListBox.ItemHeight = 16;
             this.playerListBox.Location = new System.Drawing.Point(661, 82);
             this.playerListBox.Name = "playerListBox";
-            this.playerListBox.Size = new System.Drawing.Size(253, 388);
+            this.playerListBox.Size = new System.Drawing.Size(296, 388);
             this.playerListBox.TabIndex = 3;
             // 
             // guildListBox
             // 
             this.guildListBox.FormattingEnabled = true;
             this.guildListBox.ItemHeight = 16;
-            this.guildListBox.Location = new System.Drawing.Point(929, 80);
+            this.guildListBox.Location = new System.Drawing.Point(963, 79);
             this.guildListBox.Name = "guildListBox";
             this.guildListBox.Size = new System.Drawing.Size(343, 388);
             this.guildListBox.TabIndex = 4;
@@ -116,7 +116,7 @@ namespace JennyCasey_Assign2
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(925, 56);
+            this.label4.Location = new System.Drawing.Point(959, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 20);
             this.label4.TabIndex = 6;
@@ -240,6 +240,7 @@ namespace JennyCasey_Assign2
             this.DisbandGuildButton.TabIndex = 1;
             this.DisbandGuildButton.Text = "Disband Guild";
             this.DisbandGuildButton.UseVisualStyleBackColor = true;
+            this.DisbandGuildButton.Click += new System.EventHandler(this.DisbandGuildButton_Click);
             // 
             // GuildRosterButton
             // 
@@ -251,6 +252,7 @@ namespace JennyCasey_Assign2
             this.GuildRosterButton.TabIndex = 0;
             this.GuildRosterButton.Text = "Print Guild Roster";
             this.GuildRosterButton.UseVisualStyleBackColor = true;
+            this.GuildRosterButton.Click += new System.EventHandler(this.GuildRosterButton_Click);
             // 
             // CreatePlayerBox
             // 
@@ -277,7 +279,7 @@ namespace JennyCasey_Assign2
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1284, 670);
+            this.ClientSize = new System.Drawing.Size(1377, 670);
             this.Controls.Add(this.CreateGuildBox);
             this.Controls.Add(this.CreatePlayerBox);
             this.Controls.Add(this.ManagementFuncBox);

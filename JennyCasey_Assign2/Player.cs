@@ -226,8 +226,7 @@ namespace JennyCasey_Assign2
 
        
         public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
-        {
-           
+        { 
             //search through the players dictionary for the username entered
             foreach (var player in dictionary)
             {
@@ -251,7 +250,7 @@ namespace JennyCasey_Assign2
                   }
               }
           }
-          /*
+         /* 
          public void AwardExperience(Dictionary<uint, Player> dictionary)
          {
              bool playerIsFound = false;
@@ -285,6 +284,7 @@ namespace JennyCasey_Assign2
                  Console.WriteLine("Unknown player");
              }
          }
+         */
          public int CompareTo(Object alpha)
          {
              //checking for null values
@@ -297,24 +297,10 @@ namespace JennyCasey_Assign2
              else
                  throw new ArgumentException("[Player]:CompareTo argument is not an Player");
          }
-         public void SortPlayerNames(Dictionary<uint, Player> dictionary)
-         {
-             //player sorted set
-             SortedSet<Player>PlayerSortedSet = new SortedSet<Player>();
-             //add the players to the sorted set
-             foreach (var i in dictionary)
-             {
-                 PlayerSortedSet.Add(i.Value);
-             }
-             //print the sorted set out
-             foreach (var i in PlayerSortedSet)
-             {
-                  Console.WriteLine(i);
-             }
-         }*/
+         
         public override string ToString()
         {
-            return (this.name.PadRight(15) + "\t" + this.Race  + "\t" +this.Level);
+            return (this.name.PadRight(15) + "\t" + this.Classes + "\t" + this.Level + "\t" + this.GuildID);
         }
     }
 }
