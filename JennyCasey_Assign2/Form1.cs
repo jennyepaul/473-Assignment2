@@ -13,9 +13,9 @@ namespace JennyCasey_Assign2
     public partial class Form1 : Form
     {
         private Dictionary<uint, Player> playerDictionary;
-        private Dictionary<uint, string> guildDictionary;
+        private Dictionary<uint, Guild> guildDictionary;
         List<Player> players = new List<Player>();
-        List<string> guilds = new List<string>();
+        List<Guild> guilds = new List<Guild>();
 
         public Form1()
         {
@@ -23,8 +23,10 @@ namespace JennyCasey_Assign2
 
             //create a new object and build the two dictionaries
             Player newplayer = new Player();
+            Guild newguild = new Guild();
             playerDictionary = newplayer.BuildPlayerDictionary();
-            guildDictionary = newplayer.BuildGuildDictionary();
+            guildDictionary = newguild.BuildGuildDictionary();
+
 
         }
 
@@ -60,14 +62,12 @@ namespace JennyCasey_Assign2
             //set the data source for the player and guild list box
             foreach(var i in playerDictionary)
             {
-                players.Add(i.Value);
+                Playerlistbox.Items.Add(i.Value);
             }
             foreach(var m in guildDictionary)
             {
-                guilds.Add(m.Value);
+                guildListBox.Items.Add(m.Value);
             }
-            Playerlistbox.DataSource = players;
-            guildListBox.DataSource = guilds;
             
         }
         private void LeaveGuildButton_Click(object sender, EventArgs e)
@@ -84,7 +84,6 @@ namespace JennyCasey_Assign2
             {
                 //parse the info
                 string[] playerText = Playerlistbox.Text.Split('\t');
-
                 //pass the player dictionary and the player name to the leave guild function
                 player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
                 outputBox.Text = "Player successfully left guild!";
@@ -116,18 +115,11 @@ namespace JennyCasey_Assign2
             }
         }
 
-        private void SearchPlayer_Textbox_TextChanged(object sender, EventArgs e)
+        private void filterGuildButton_Click(object sender, EventArgs e)
         {
-            outputBox.Text = " ";
-            string playerName = SearchPlayer_Textbox.Text;
-
-            foreach(var i in playerDictionary)
-            {
-                if(i.Value.Name == playerName)
-                {
-                    outputBox.Text = (i.Value.Name);                  
-                }
-            }
+            //if there is something entered into the search bar, then remove the guilds
+            //that do not have that server name
+            
         }
     }
 }

@@ -37,9 +37,10 @@ namespace JennyCasey_Assign2
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ManagementFuncBox = new System.Windows.Forms.GroupBox();
+            this.filterPlayerButton = new System.Windows.Forms.Button();
             this.SearchGuild = new System.Windows.Forms.Label();
             this.SearchPlayer = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.searchGuildTextBox = new System.Windows.Forms.TextBox();
             this.SearchPlayer_Textbox = new System.Windows.Forms.TextBox();
             this.SearchCriteriaButton = new System.Windows.Forms.Button();
             this.LeaveGuildButton = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@ namespace JennyCasey_Assign2
             this.GuildRosterButton = new System.Windows.Forms.Button();
             this.CreatePlayerBox = new System.Windows.Forms.GroupBox();
             this.CreateGuildBox = new System.Windows.Forms.GroupBox();
+            this.filterGuildButton = new System.Windows.Forms.Button();
             this.ManagementFuncBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +68,7 @@ namespace JennyCasey_Assign2
             // 
             this.outputBox.Location = new System.Drawing.Point(25, 518);
             this.outputBox.Name = "outputBox";
-            this.outputBox.Size = new System.Drawing.Size(1189, 130);
+            this.outputBox.Size = new System.Drawing.Size(1247, 130);
             this.outputBox.TabIndex = 1;
             this.outputBox.Text = "";
             // 
@@ -85,7 +87,7 @@ namespace JennyCasey_Assign2
             // 
             this.Playerlistbox.FormattingEnabled = true;
             this.Playerlistbox.ItemHeight = 16;
-            this.Playerlistbox.Location = new System.Drawing.Point(681, 90);
+            this.Playerlistbox.Location = new System.Drawing.Point(661, 82);
             this.Playerlistbox.Name = "Playerlistbox";
             this.Playerlistbox.Size = new System.Drawing.Size(253, 388);
             this.Playerlistbox.TabIndex = 3;
@@ -94,9 +96,9 @@ namespace JennyCasey_Assign2
             // 
             this.guildListBox.FormattingEnabled = true;
             this.guildListBox.ItemHeight = 16;
-            this.guildListBox.Location = new System.Drawing.Point(952, 92);
+            this.guildListBox.Location = new System.Drawing.Point(929, 80);
             this.guildListBox.Name = "guildListBox";
-            this.guildListBox.Size = new System.Drawing.Size(262, 388);
+            this.guildListBox.Size = new System.Drawing.Size(343, 388);
             this.guildListBox.TabIndex = 4;
             // 
             // label3
@@ -104,7 +106,7 @@ namespace JennyCasey_Assign2
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(677, 56);
+            this.label3.Location = new System.Drawing.Point(657, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 20);
             this.label3.TabIndex = 5;
@@ -115,7 +117,7 @@ namespace JennyCasey_Assign2
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(948, 56);
+            this.label4.Location = new System.Drawing.Point(925, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 20);
             this.label4.TabIndex = 6;
@@ -123,9 +125,11 @@ namespace JennyCasey_Assign2
             // 
             // ManagementFuncBox
             // 
+            this.ManagementFuncBox.Controls.Add(this.filterGuildButton);
+            this.ManagementFuncBox.Controls.Add(this.filterPlayerButton);
             this.ManagementFuncBox.Controls.Add(this.SearchGuild);
             this.ManagementFuncBox.Controls.Add(this.SearchPlayer);
-            this.ManagementFuncBox.Controls.Add(this.textBox2);
+            this.ManagementFuncBox.Controls.Add(this.searchGuildTextBox);
             this.ManagementFuncBox.Controls.Add(this.SearchPlayer_Textbox);
             this.ManagementFuncBox.Controls.Add(this.SearchCriteriaButton);
             this.ManagementFuncBox.Controls.Add(this.LeaveGuildButton);
@@ -140,12 +144,23 @@ namespace JennyCasey_Assign2
             this.ManagementFuncBox.TabStop = false;
             this.ManagementFuncBox.Text = "Management Functions";
             // 
+            // filterPlayerButton
+            // 
+            this.filterPlayerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterPlayerButton.ForeColor = System.Drawing.Color.Black;
+            this.filterPlayerButton.Location = new System.Drawing.Point(548, 42);
+            this.filterPlayerButton.Name = "filterPlayerButton";
+            this.filterPlayerButton.Size = new System.Drawing.Size(75, 23);
+            this.filterPlayerButton.TabIndex = 9;
+            this.filterPlayerButton.Text = "Filter";
+            this.filterPlayerButton.UseVisualStyleBackColor = true;
+            // 
             // SearchGuild
             // 
             this.SearchGuild.AutoSize = true;
             this.SearchGuild.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchGuild.ForeColor = System.Drawing.Color.Black;
-            this.SearchGuild.Location = new System.Drawing.Point(381, 93);
+            this.SearchGuild.Location = new System.Drawing.Point(348, 93);
             this.SearchGuild.Name = "SearchGuild";
             this.SearchGuild.Size = new System.Drawing.Size(165, 17);
             this.SearchGuild.TabIndex = 8;
@@ -156,26 +171,27 @@ namespace JennyCasey_Assign2
             this.SearchPlayer.AutoSize = true;
             this.SearchPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchPlayer.ForeColor = System.Drawing.Color.Black;
-            this.SearchPlayer.Location = new System.Drawing.Point(379, 22);
+            this.SearchPlayer.Location = new System.Drawing.Point(346, 22);
             this.SearchPlayer.Name = "SearchPlayer";
             this.SearchPlayer.Size = new System.Drawing.Size(167, 17);
             this.SearchPlayer.TabIndex = 7;
             this.SearchPlayer.Text = "Search Player (by Name)";
             // 
-            // textBox2
+            // searchGuildTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(379, 111);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 27);
-            this.textBox2.TabIndex = 6;
+            this.searchGuildTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchGuildTextBox.Location = new System.Drawing.Point(349, 111);
+            this.searchGuildTextBox.Name = "searchGuildTextBox";
+            this.searchGuildTextBox.Size = new System.Drawing.Size(192, 27);
+            this.searchGuildTextBox.TabIndex = 6;
             // 
             // SearchPlayer_Textbox
             // 
-            this.SearchPlayer_Textbox.Location = new System.Drawing.Point(379, 45);
+            this.SearchPlayer_Textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchPlayer_Textbox.Location = new System.Drawing.Point(349, 42);
             this.SearchPlayer_Textbox.Name = "SearchPlayer_Textbox";
             this.SearchPlayer_Textbox.Size = new System.Drawing.Size(192, 27);
             this.SearchPlayer_Textbox.TabIndex = 5;
-            this.SearchPlayer_Textbox.TextChanged += new System.EventHandler(this.SearchPlayer_Textbox_TextChanged);
             // 
             // SearchCriteriaButton
             // 
@@ -255,12 +271,24 @@ namespace JennyCasey_Assign2
             this.CreateGuildBox.TabStop = false;
             this.CreateGuildBox.Text = "Create New Guild";
             // 
+            // filterGuildButton
+            // 
+            this.filterGuildButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterGuildButton.ForeColor = System.Drawing.Color.Black;
+            this.filterGuildButton.Location = new System.Drawing.Point(547, 111);
+            this.filterGuildButton.Name = "filterGuildButton";
+            this.filterGuildButton.Size = new System.Drawing.Size(75, 23);
+            this.filterGuildButton.TabIndex = 10;
+            this.filterGuildButton.Text = "Filter";
+            this.filterGuildButton.UseVisualStyleBackColor = true;
+            this.filterGuildButton.Click += new System.EventHandler(this.filterGuildButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1239, 670);
+            this.ClientSize = new System.Drawing.Size(1284, 670);
             this.Controls.Add(this.CreateGuildBox);
             this.Controls.Add(this.CreatePlayerBox);
             this.Controls.Add(this.ManagementFuncBox);
@@ -300,9 +328,11 @@ namespace JennyCasey_Assign2
         private System.Windows.Forms.Button DisbandGuildButton;
         private System.Windows.Forms.Button GuildRosterButton;
         private System.Windows.Forms.Label SearchPlayer;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox SearchPlayer_Textbox;
         private System.Windows.Forms.Label SearchGuild;
+        private System.Windows.Forms.TextBox searchGuildTextBox;
+        private System.Windows.Forms.TextBox SearchPlayer_Textbox;
+        private System.Windows.Forms.Button filterPlayerButton;
+        private System.Windows.Forms.Button filterGuildButton;
     }
 }
 
