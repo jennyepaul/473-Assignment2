@@ -26,8 +26,6 @@ namespace JennyCasey_Assign2
             Guild newguild = new Guild();
             playerDictionary = newplayer.BuildPlayerDictionary();
             guildDictionary = newguild.BuildGuildDictionary();
-
-
         }
 
         //confused what form object this is??
@@ -59,7 +57,7 @@ namespace JennyCasey_Assign2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //set the data source for the player and guild list box
+            //populate the playerListBox and guildListBox
             foreach(var i in playerDictionary)
             {
                 playerListBox.Items.Add(i.Value);
@@ -67,8 +65,7 @@ namespace JennyCasey_Assign2
             foreach(var m in guildDictionary)
             {
                 guildListBox.Items.Add(m.Value);
-            }
-            
+            }           
         }
         private void LeaveGuildButton_Click(object sender, EventArgs e)
         {
@@ -84,10 +81,10 @@ namespace JennyCasey_Assign2
             {
                 //parse the info
                 string[] playerText = playerListBox.Text.Split('\t');
+
                 //pass the player dictionary and the player name to the leave guild function
                 player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
-                outputBox.Text = "Player successfully left guild!";
-                
+                outputBox.Text = "Player successfully left guild!";               
             }
         }
         private void JoinGuildButton_Click(object sender, EventArgs e)
