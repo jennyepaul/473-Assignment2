@@ -31,99 +31,22 @@ namespace JennyCasey_Assign2
         //confused what form object this is??
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
-            Player player1 = new Player();
-            var players = player1.BuildPlayerDictionary();
+            //clear both the list boxes, so we can repopulate
+            guildListBox.Items.Clear();
+            playerListBox.Items.Clear();
 
-            string letter = searchPlayerTextbox.Text;
-
-            var list = new List<string>();
-            string sub;
-
-            if (letter != "")
-            {
-                playerListBox.Items.Clear();
-            }
-
-            foreach (var i in players)
-            {
-                sub = i.Value.Name.Substring(0, 1);
-                list.Add(sub);
-                if (letter == sub)
-                {
-                    playerListBox.Items.Add(string.Format("{0} \t {1} \t {2}", i.Value.Name.PadRight(10), i.Value.Race, i.Value.Level));
-                }
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //populate the playerListBox and guildListBox
-            foreach(var i in playerDictionary)
-            {
-                playerListBox.Items.Add(i.Value);
-            }
-            foreach(var m in guildDictionary)
-            {
-                guildListBox.Items.Add(m.Value);
-            }           
-        }
-        private void LeaveGuildButton_Click(object sender, EventArgs e)
-        {
-            Player player1 = new Player();
-
-            //check that a player and guild has been selected
-            if(playerListBox.SelectedIndex == -1)
-            {
-                outputBox.Text = "No player selected";
-                return;
-            }
-            else
-            {
-                //parse the info
-                string[] playerText = playerListBox.Text.Split('\t');
-
-                //pass the player dictionary and the player name to the leave guild function
-                player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
-                outputBox.Text = "Player successfully left guild!";               
-            }
-        }
-        private void JoinGuildButton_Click(object sender, EventArgs e)
-        {
-            Player player1 = new Player();
-            uint guildID;
-            // check that a player and guild has been selected
-            if ((playerListBox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
-            {
-                outputBox.Text = "No player and guild selected";
-                return;
-            }
-            else
-            {
-                //parse the info
-                string[] playerText = playerListBox.Text.Split('\t');
-                string[] guildText = guildListBox.Text.Split('\t');
-
-                //parse the guild ID to a uint, not a string
-                uint.TryParse(guildText[0], out guildID );
-
-                //pass the player dictionary, player name, and guildID to function to join a guild
-                player1.PlayerJoinGuild(playerDictionary, playerText[1], guildID);
-                outputBox.Text = "Player successfully joined the guild!";
-            }
-        }
-
-        private void searchGuildTextBox_TextChanged(object sender, EventArgs e)
-        {
+            //********************************
+            //GUILD TEXT BOX SEARCH CRITERA
+            //********************************
+            //search the guild list box
             string serverFilter = searchGuildTextBox.Text;
             //if user has entered something into the text box, let's filter
-            if(!string.IsNullOrEmpty(searchGuildTextBox.Text))
+            if (!string.IsNullOrEmpty(searchGuildTextBox.Text))
             {
-                //clear the guild list box
-                guildListBox.Items.Clear();
-                foreach(var name in guildDictionary)
+                foreach (var name in guildDictionary)
                 {
-                   //add the ones that match the criteria back in
-                    if (name.Value.Server == serverFilter )
+                    //add the ones that match the criteria back in
+                    if (name.Value.Server == serverFilter)
                     {
                         //add the guild value back in
                         guildListBox.Items.Add(name.Value);
@@ -131,13 +54,13 @@ namespace JennyCasey_Assign2
                 }
             }
             //else if they havent entered anything/is empty, display all items
-            else if(serverFilter == " ")
+            else if (serverFilter == " ")
             {
-                foreach(var guild in guildDictionary)
+                foreach (var guild in guildDictionary)
                 {
                     guildListBox.Items.Add(guild.Value);
                 }
-            }
+            }           
             //otherwise display all guilds/clear search by displaying all values
             else
             {
@@ -145,18 +68,16 @@ namespace JennyCasey_Assign2
                 {
                     guildListBox.Items.Add(guild.Value);
                 }
+            }         
 
-            }
-        }
-
-        private void SearchPlayer_Textbox_TextChanged(object sender, EventArgs e)
-        {
+            //********************************
+            //PLAYER TEXT BOX SEARCH CRITERA
+            //********************************
             string nameFilter = searchPlayerTextbox.Text;
             //if user has entered something into the text box, let's filter
             if (!string.IsNullOrEmpty(searchPlayerTextbox.Text))
             {
                 //clear the player list box
-                playerListBox.Items.Clear();
                 foreach (var name in playerDictionary)
                 {
                     //add the ones that match the criteria back in
@@ -182,6 +103,64 @@ namespace JennyCasey_Assign2
                 {
                     playerListBox.Items.Add(player.Value);
                 }
+            }
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //populate the playerListBox and guildListBox
+            foreach (var i in playerDictionary)
+            {
+                playerListBox.Items.Add(i.Value);
+            }
+            foreach (var m in guildDictionary)
+            {
+                guildListBox.Items.Add(m.Value);
+            }
+        }
+        private void LeaveGuildButton_Click(object sender, EventArgs e)
+        {
+            Player player1 = new Player();
+
+            //check that a player and guild has been selected
+            if (playerListBox.SelectedIndex == -1)
+            {
+                outputBox.Text = "No player selected";
+                return;
+            }
+            else
+            {
+                //parse the info
+                string[] playerText = playerListBox.Text.Split('\t');
+
+                //pass the player dictionary and the player name to the leave guild function
+                player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
+                outputBox.Text = "Player successfully left guild!";
+            }
+        }
+        private void JoinGuildButton_Click(object sender, EventArgs e)
+        {
+            Player player1 = new Player();
+            uint guildID;
+            // check that a player and guild has been selected
+            if ((playerListBox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
+            {
+                outputBox.Text = "No player and guild selected";
+                return;
+            }
+            else
+            {
+                //parse the info
+                string[] playerText = playerListBox.Text.Split('\t');
+                string[] guildText = guildListBox.Text.Split('\t');
+
+                //parse the guild ID to a uint, not a string
+                uint.TryParse(guildText[0], out guildID);
+
+                //pass the player dictionary, player name, and guildID to function to join a guild
+                player1.PlayerJoinGuild(playerDictionary, playerText[1], guildID);
+                outputBox.Text = "Player successfully joined the guild!";
             }
         }
     }

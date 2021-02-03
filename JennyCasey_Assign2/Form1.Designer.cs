@@ -41,11 +41,11 @@ namespace JennyCasey_Assign2
             this.SearchPlayer = new System.Windows.Forms.Label();
             this.searchGuildTextBox = new System.Windows.Forms.TextBox();
             this.searchPlayerTextbox = new System.Windows.Forms.TextBox();
-            this.SearchCriteriaButton = new System.Windows.Forms.Button();
             this.LeaveGuildButton = new System.Windows.Forms.Button();
             this.JoinGuildButton = new System.Windows.Forms.Button();
             this.DisbandGuildButton = new System.Windows.Forms.Button();
             this.GuildRosterButton = new System.Windows.Forms.Button();
+            this.SearchCriteriaButton = new System.Windows.Forms.Button();
             this.CreatePlayerBox = new System.Windows.Forms.GroupBox();
             this.CreateGuildBox = new System.Windows.Forms.GroupBox();
             this.ManagementFuncBox.SuspendLayout();
@@ -123,19 +123,19 @@ namespace JennyCasey_Assign2
             // 
             // ManagementFuncBox
             // 
+            this.ManagementFuncBox.Controls.Add(this.SearchCriteriaButton);
             this.ManagementFuncBox.Controls.Add(this.SearchGuild);
             this.ManagementFuncBox.Controls.Add(this.SearchPlayer);
             this.ManagementFuncBox.Controls.Add(this.searchGuildTextBox);
             this.ManagementFuncBox.Controls.Add(this.searchPlayerTextbox);
-            this.ManagementFuncBox.Controls.Add(this.SearchCriteriaButton);
             this.ManagementFuncBox.Controls.Add(this.LeaveGuildButton);
             this.ManagementFuncBox.Controls.Add(this.JoinGuildButton);
             this.ManagementFuncBox.Controls.Add(this.DisbandGuildButton);
             this.ManagementFuncBox.Controls.Add(this.GuildRosterButton);
             this.ManagementFuncBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManagementFuncBox.Location = new System.Drawing.Point(12, 56);
+            this.ManagementFuncBox.Location = new System.Drawing.Point(12, 44);
             this.ManagementFuncBox.Name = "ManagementFuncBox";
-            this.ManagementFuncBox.Size = new System.Drawing.Size(633, 144);
+            this.ManagementFuncBox.Size = new System.Drawing.Size(633, 156);
             this.ManagementFuncBox.TabIndex = 7;
             this.ManagementFuncBox.TabStop = false;
             this.ManagementFuncBox.Text = "Management Functions";
@@ -145,7 +145,7 @@ namespace JennyCasey_Assign2
             this.SearchGuild.AutoSize = true;
             this.SearchGuild.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchGuild.ForeColor = System.Drawing.Color.Black;
-            this.SearchGuild.Location = new System.Drawing.Point(348, 93);
+            this.SearchGuild.Location = new System.Drawing.Point(171, 93);
             this.SearchGuild.Name = "SearchGuild";
             this.SearchGuild.Size = new System.Drawing.Size(165, 17);
             this.SearchGuild.TabIndex = 8;
@@ -156,7 +156,7 @@ namespace JennyCasey_Assign2
             this.SearchPlayer.AutoSize = true;
             this.SearchPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchPlayer.ForeColor = System.Drawing.Color.Black;
-            this.SearchPlayer.Location = new System.Drawing.Point(346, 22);
+            this.SearchPlayer.Location = new System.Drawing.Point(169, 23);
             this.SearchPlayer.Name = "SearchPlayer";
             this.SearchPlayer.Size = new System.Drawing.Size(167, 17);
             this.SearchPlayer.TabIndex = 7;
@@ -165,40 +165,26 @@ namespace JennyCasey_Assign2
             // searchGuildTextBox
             // 
             this.searchGuildTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchGuildTextBox.Location = new System.Drawing.Point(349, 111);
+            this.searchGuildTextBox.Location = new System.Drawing.Point(172, 113);
             this.searchGuildTextBox.Name = "searchGuildTextBox";
             this.searchGuildTextBox.Size = new System.Drawing.Size(192, 27);
             this.searchGuildTextBox.TabIndex = 6;
-            this.searchGuildTextBox.TextChanged += new System.EventHandler(this.searchGuildTextBox_TextChanged);
             // 
             // searchPlayerTextbox
             // 
             this.searchPlayerTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPlayerTextbox.Location = new System.Drawing.Point(349, 42);
+            this.searchPlayerTextbox.Location = new System.Drawing.Point(172, 42);
             this.searchPlayerTextbox.Name = "searchPlayerTextbox";
             this.searchPlayerTextbox.Size = new System.Drawing.Size(192, 27);
             this.searchPlayerTextbox.TabIndex = 5;
-            this.searchPlayerTextbox.TextChanged += new System.EventHandler(this.SearchPlayer_Textbox_TextChanged);
-            // 
-            // SearchCriteriaButton
-            // 
-            this.SearchCriteriaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchCriteriaButton.ForeColor = System.Drawing.Color.Black;
-            this.SearchCriteriaButton.Location = new System.Drawing.Point(159, 57);
-            this.SearchCriteriaButton.Name = "SearchCriteriaButton";
-            this.SearchCriteriaButton.Size = new System.Drawing.Size(160, 25);
-            this.SearchCriteriaButton.TabIndex = 4;
-            this.SearchCriteriaButton.Text = "Apply Search Criteria";
-            this.SearchCriteriaButton.UseVisualStyleBackColor = true;
-            this.SearchCriteriaButton.Click += new System.EventHandler(this.SearchCriteriaButton_Click);
             // 
             // LeaveGuildButton
             // 
             this.LeaveGuildButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LeaveGuildButton.ForeColor = System.Drawing.Color.Black;
-            this.LeaveGuildButton.Location = new System.Drawing.Point(159, 26);
+            this.LeaveGuildButton.Location = new System.Drawing.Point(13, 120);
             this.LeaveGuildButton.Name = "LeaveGuildButton";
-            this.LeaveGuildButton.Size = new System.Drawing.Size(160, 25);
+            this.LeaveGuildButton.Size = new System.Drawing.Size(140, 25);
             this.LeaveGuildButton.TabIndex = 3;
             this.LeaveGuildButton.Text = "Leave Guild";
             this.LeaveGuildButton.UseVisualStyleBackColor = true;
@@ -237,6 +223,18 @@ namespace JennyCasey_Assign2
             this.GuildRosterButton.TabIndex = 0;
             this.GuildRosterButton.Text = "Print Guild Roster";
             this.GuildRosterButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchCriteriaButton
+            // 
+            this.SearchCriteriaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchCriteriaButton.ForeColor = System.Drawing.Color.Black;
+            this.SearchCriteriaButton.Location = new System.Drawing.Point(364, 75);
+            this.SearchCriteriaButton.Name = "SearchCriteriaButton";
+            this.SearchCriteriaButton.Size = new System.Drawing.Size(160, 25);
+            this.SearchCriteriaButton.TabIndex = 4;
+            this.SearchCriteriaButton.Text = "Apply Search Criteria";
+            this.SearchCriteriaButton.UseVisualStyleBackColor = true;
+            this.SearchCriteriaButton.Click += new System.EventHandler(this.SearchCriteriaButton_Click);
             // 
             // CreatePlayerBox
             // 
