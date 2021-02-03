@@ -119,19 +119,19 @@ namespace JennyCasey_Assign2
             else
             {
                 //parse the info
-                string[] playerText = playerListBox.Text.Split('\t');
+                string playerName= ((Player)playerListBox.SelectedItem).Name;
 
+                outputBox.Text = "Player " + playerName + "is leaving guild";
                 //pass the player dictionary and the player name to the leave guild function
-                player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
+                player1.PlayerLeaveGuild(playerDictionary, playerName);
                 outputBox.Text = "Player successfully left guild!";
             }
         }
         private void JoinGuildButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
-            uint guildID;
             // check that a player and guild has been selected
-            if ((playerListBox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
+            if ((playerListBox.SelectedItem == null) && (guildListBox.SelectedItem == null))
             {
                 outputBox.Text = "No player and guild selected";
                 return;
@@ -139,14 +139,12 @@ namespace JennyCasey_Assign2
             else
             {
                 //parse the info
-                string[] playerText = playerListBox.Text.Split('\t');
-                string[] guildText = guildListBox.Text.Split('\t');
+                string playerName = ((Player)playerListBox.SelectedItem).Name;
+                uint id = ((Guild)guildListBox.SelectedItem).ID;
 
-                //parse the guild ID to a uint, not a string
-                uint.TryParse(guildText[0], out guildID);
 
                 //pass the player dictionary, player name, and guildID to function to join a guild
-                player1.PlayerJoinGuild(playerDictionary, playerText[1], guildID);
+                player1.PlayerJoinGuild(playerDictionary, playerName, id);
                 outputBox.Text = "Player successfully joined the guild!";
             }
         }
@@ -181,17 +179,25 @@ namespace JennyCasey_Assign2
             
             //iterate through the player dictionary, match up the guild ID in the player
             //dictionary with the key of the guild dictionary, then append that text to output
-            foreach (var player in playerDictionary)
-            { 
-                foreach(var guild in guildDictionary)
+           foreach (var player in playerDictionary)
+           { 
+                if (player.Value.GuildID > 0)
                 {
-                    if (player.Value.GuildID == guild.Key)
+                    foreach (var guild in guildDictionary)
                     {
-                        string guildName = guild.Value.Name;
-                        outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
+                        if (player.Value.GuildID == guild.Key)
+                        {
+                            string guildName = guild.Value.Name;
+                            outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
                                     "\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName + "\n");
-                    }
+                        }
+                    }                       
                 }
+                else
+                {
+                    outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
+                                   "\tLevel: " + player.Value.Level + "\n");
+                }               
             }
         }
 

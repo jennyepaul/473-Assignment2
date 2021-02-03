@@ -224,7 +224,7 @@ namespace JennyCasey_Assign2
             }
         }
 
-       
+      
         public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
         { 
             //search through the players dictionary for the username entered
@@ -243,6 +243,7 @@ namespace JennyCasey_Assign2
               //search for the name that the user entered in the players dictionary
               foreach (var player in dictionary)
               {
+                //if we find the player name in the dictionary
                   if (player.Value.Name == playerName)
                   {                     
                       //set the guild to the guild ID and print out that player joined
@@ -301,7 +302,7 @@ namespace JennyCasey_Assign2
          
         public override string ToString()
         {
-            return (this.name.PadRight(15) + "\t" + this.Classes + "\t" + this.Level + "\t" + this.GuildID);
+            return (this.name.PadRight(15) + "\t" + this.Classes + "\t" + this.Level);
         }
     }
 }
