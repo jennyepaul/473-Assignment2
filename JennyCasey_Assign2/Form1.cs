@@ -44,6 +44,23 @@ namespace JennyCasey_Assign2
             //sort the list boxes
             playerListBox.Sorted = true;
             guildListBox.Sorted = true;
+
+            //set up everything to get ready to add a new player
+            raceDropDown.Items.Add(Race.Forsaken);
+            raceDropDown.Items.Add(Race.Orc);
+            raceDropDown.Items.Add(Race.Tauren);
+            raceDropDown.Items.Add(Race.Troll);
+
+            classDropDown.Items.Add(Class.Druid);
+            classDropDown.Items.Add(Class.Hunter);
+            classDropDown.Items.Add(Class.Mage);
+            classDropDown.Items.Add(Class.Paladin);
+            classDropDown.Items.Add(Class.Priest);
+            classDropDown.Items.Add(Class.Rogue);
+            classDropDown.Items.Add(Class.Shaman);
+            classDropDown.Items.Add(Class.Warlock);
+            classDropDown.Items.Add(Class.Warrior);
+
         }
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
@@ -282,6 +299,81 @@ namespace JennyCasey_Assign2
                 }
 
             }
+
+        }
+
+        private void classDropDown_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(classDropDown.SelectedItem != null)
+            {
+                //clear any previous selections
+                roleDropDown.Items.Clear();
+
+                //add the right roles depending what item was selected from the class drop down
+                if(classDropDown.SelectedItem.Equals(Class.Warrior))
+                {
+                    roleDropDown.Items.Add(Role.Tank);
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if(classDropDown.SelectedItem.Equals(Class.Mage))
+                {
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if(classDropDown.SelectedItem.Equals(Class.Druid))
+                {
+                    roleDropDown.Items.Add(Role.Tank);
+                    roleDropDown.Items.Add(Role.Healer);
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if(classDropDown.SelectedItem.Equals(Class.Priest))
+                {
+                    roleDropDown.Items.Add(Role.Healer);
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if(classDropDown.SelectedItem.Equals(Class.Warlock))
+                {
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if (classDropDown.SelectedItem.Equals(Class.Rogue))
+                {
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if (classDropDown.SelectedItem.Equals(Class.Paladin))
+                {
+                    roleDropDown.Items.Add(Role.Tank);
+                    roleDropDown.Items.Add(Role.Healer);
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if (classDropDown.SelectedItem.Equals(Class.Hunter))
+                {
+                    roleDropDown.Items.Add(Role.DPS);
+                }
+                else if (classDropDown.SelectedItem.Equals(Class.Shaman))
+                {
+                    roleDropDown.Items.Add(Role.DPS);
+                    roleDropDown.Items.Add(Role.Healer);
+                }
+            }
+        }
+
+        private void addPlayerButton_Click(object sender, EventArgs e)
+        {
+            //get the playername, and set the class, race, and role
+            var playerName = playerNameInput.Text;
+            Class playerClass = (Class)classDropDown.SelectedItem;
+            Race playerRace = (Race)raceDropDown.SelectedItem;
+            Role playerRole = (Role)roleDropDown.SelectedItem;
+
+            //generate a random ID
+            Random randomID = new Random();
+            uint playerID = (uint)randomID.Next(00000000, 100000000);
+
+            //create a new player
+            Player newPlayer = new Player(playerID, playerName, playerRace, playerClass, 0, 0, 0);
+
+            //add that player to the listbox and dictionary
+            playerListBox.Items.Add(newPlayer);
+            playerDictionary.Add(playerID, newPlayer);
 
         }
     }

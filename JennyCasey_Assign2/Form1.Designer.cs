@@ -48,8 +48,18 @@ namespace JennyCasey_Assign2
             this.DisbandGuildButton = new System.Windows.Forms.Button();
             this.GuildRosterButton = new System.Windows.Forms.Button();
             this.CreatePlayerBox = new System.Windows.Forms.GroupBox();
+            this.raceLabel = new System.Windows.Forms.Label();
+            this.classLabel = new System.Windows.Forms.Label();
+            this.addPlayerButton = new System.Windows.Forms.Button();
+            this.roleDropDown = new System.Windows.Forms.ComboBox();
+            this.raceDropDown = new System.Windows.Forms.ComboBox();
+            this.classDropDown = new System.Windows.Forms.ComboBox();
+            this.playerNameLabel = new System.Windows.Forms.Label();
+            this.playerNameInput = new System.Windows.Forms.TextBox();
             this.CreateGuildBox = new System.Windows.Forms.GroupBox();
+            this.roleLabel = new System.Windows.Forms.Label();
             this.ManagementFuncBox.SuspendLayout();
+            this.CreatePlayerBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -257,6 +267,15 @@ namespace JennyCasey_Assign2
             // 
             // CreatePlayerBox
             // 
+            this.CreatePlayerBox.Controls.Add(this.roleLabel);
+            this.CreatePlayerBox.Controls.Add(this.raceLabel);
+            this.CreatePlayerBox.Controls.Add(this.classLabel);
+            this.CreatePlayerBox.Controls.Add(this.addPlayerButton);
+            this.CreatePlayerBox.Controls.Add(this.roleDropDown);
+            this.CreatePlayerBox.Controls.Add(this.raceDropDown);
+            this.CreatePlayerBox.Controls.Add(this.classDropDown);
+            this.CreatePlayerBox.Controls.Add(this.playerNameLabel);
+            this.CreatePlayerBox.Controls.Add(this.playerNameInput);
             this.CreatePlayerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreatePlayerBox.Location = new System.Drawing.Point(12, 206);
             this.CreatePlayerBox.Name = "CreatePlayerBox";
@@ -264,6 +283,87 @@ namespace JennyCasey_Assign2
             this.CreatePlayerBox.TabIndex = 8;
             this.CreatePlayerBox.TabStop = false;
             this.CreatePlayerBox.Text = "Create New Player";
+            // 
+            // raceLabel
+            // 
+            this.raceLabel.AutoSize = true;
+            this.raceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.raceLabel.ForeColor = System.Drawing.Color.Black;
+            this.raceLabel.Location = new System.Drawing.Point(230, 19);
+            this.raceLabel.Name = "raceLabel";
+            this.raceLabel.Size = new System.Drawing.Size(41, 17);
+            this.raceLabel.TabIndex = 7;
+            this.raceLabel.Text = "Race";
+            // 
+            // classLabel
+            // 
+            this.classLabel.AutoSize = true;
+            this.classLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classLabel.ForeColor = System.Drawing.Color.Black;
+            this.classLabel.Location = new System.Drawing.Point(10, 73);
+            this.classLabel.Name = "classLabel";
+            this.classLabel.Size = new System.Drawing.Size(42, 17);
+            this.classLabel.TabIndex = 6;
+            this.classLabel.Text = "Class";
+            // 
+            // addPlayerButton
+            // 
+            this.addPlayerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPlayerButton.ForeColor = System.Drawing.Color.Black;
+            this.addPlayerButton.Location = new System.Drawing.Point(384, 43);
+            this.addPlayerButton.Name = "addPlayerButton";
+            this.addPlayerButton.Size = new System.Drawing.Size(119, 23);
+            this.addPlayerButton.TabIndex = 5;
+            this.addPlayerButton.Text = "Add Player";
+            this.addPlayerButton.UseVisualStyleBackColor = true;
+            this.addPlayerButton.Click += new System.EventHandler(this.addPlayerButton_Click);
+            // 
+            // roleDropDown
+            // 
+            this.roleDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roleDropDown.FormattingEnabled = true;
+            this.roleDropDown.Location = new System.Drawing.Point(233, 93);
+            this.roleDropDown.Name = "roleDropDown";
+            this.roleDropDown.Size = new System.Drawing.Size(140, 24);
+            this.roleDropDown.TabIndex = 4;
+            // 
+            // raceDropDown
+            // 
+            this.raceDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.raceDropDown.FormattingEnabled = true;
+            this.raceDropDown.Location = new System.Drawing.Point(233, 39);
+            this.raceDropDown.Name = "raceDropDown";
+            this.raceDropDown.Size = new System.Drawing.Size(140, 24);
+            this.raceDropDown.TabIndex = 3;
+            // 
+            // classDropDown
+            // 
+            this.classDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classDropDown.FormattingEnabled = true;
+            this.classDropDown.Location = new System.Drawing.Point(13, 93);
+            this.classDropDown.Name = "classDropDown";
+            this.classDropDown.Size = new System.Drawing.Size(140, 24);
+            this.classDropDown.TabIndex = 2;
+            this.classDropDown.SelectedValueChanged += new System.EventHandler(this.classDropDown_SelectedValueChanged);
+            // 
+            // playerNameLabel
+            // 
+            this.playerNameLabel.AutoSize = true;
+            this.playerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerNameLabel.ForeColor = System.Drawing.Color.Black;
+            this.playerNameLabel.Location = new System.Drawing.Point(10, 19);
+            this.playerNameLabel.Name = "playerNameLabel";
+            this.playerNameLabel.Size = new System.Drawing.Size(89, 17);
+            this.playerNameLabel.TabIndex = 1;
+            this.playerNameLabel.Text = "Player Name";
+            // 
+            // playerNameInput
+            // 
+            this.playerNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerNameInput.Location = new System.Drawing.Point(13, 39);
+            this.playerNameInput.Name = "playerNameInput";
+            this.playerNameInput.Size = new System.Drawing.Size(140, 22);
+            this.playerNameInput.TabIndex = 0;
             // 
             // CreateGuildBox
             // 
@@ -274,6 +374,17 @@ namespace JennyCasey_Assign2
             this.CreateGuildBox.TabIndex = 9;
             this.CreateGuildBox.TabStop = false;
             this.CreateGuildBox.Text = "Create New Guild";
+            // 
+            // roleLabel
+            // 
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roleLabel.ForeColor = System.Drawing.Color.Black;
+            this.roleLabel.Location = new System.Drawing.Point(230, 73);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(37, 17);
+            this.roleLabel.TabIndex = 8;
+            this.roleLabel.Text = "Role";
             // 
             // Form1
             // 
@@ -297,6 +408,8 @@ namespace JennyCasey_Assign2
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ManagementFuncBox.ResumeLayout(false);
             this.ManagementFuncBox.PerformLayout();
+            this.CreatePlayerBox.ResumeLayout(false);
+            this.CreatePlayerBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,6 +437,15 @@ namespace JennyCasey_Assign2
         private System.Windows.Forms.TextBox searchGuildTextBox;
         private System.Windows.Forms.TextBox searchPlayerTextbox;
         private System.Windows.Forms.Button clearSearchCriteria;
+        private System.Windows.Forms.ComboBox roleDropDown;
+        private System.Windows.Forms.ComboBox raceDropDown;
+        private System.Windows.Forms.ComboBox classDropDown;
+        private System.Windows.Forms.Label playerNameLabel;
+        private System.Windows.Forms.TextBox playerNameInput;
+        private System.Windows.Forms.Button addPlayerButton;
+        private System.Windows.Forms.Label raceLabel;
+        private System.Windows.Forms.Label classLabel;
+        private System.Windows.Forms.Label roleLabel;
     }
 }
 
