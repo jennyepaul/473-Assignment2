@@ -131,13 +131,14 @@ namespace JennyCasey_Assign2
         {
             Player player1 = new Player();
             // check that a player and guild has been selected
-            if ((playerListBox.SelectedItem == null) && (guildListBox.SelectedItem == null))
+            if ((playerListBox.SelectedItem.Equals(null)) && (guildListBox.SelectedItem.Equals(null)))
             {
                 outputBox.Text = "No player and guild selected";
                 return;
             }
             else
             {
+                //need to put some catch or double check, cause if user doesnt click a guild we error out here
                 //parse the info
                 string playerName = ((Player)playerListBox.SelectedItem).Name;
                 uint id = ((Guild)guildListBox.SelectedItem).ID;
