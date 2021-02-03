@@ -60,10 +60,10 @@ namespace JennyCasey_Assign2
     {
         //constants for program
         private static uint MAX_LEVEL = 60;
-        private readonly uint id;
-        private readonly string name;
-        private readonly Race race;
-        private readonly Class classes;
+        private uint id;
+        private string name;
+        private Race race;
+        private Class classes;
         private uint level;
         private uint exp;
         private uint guildId;
@@ -102,26 +102,27 @@ namespace JennyCasey_Assign2
         public uint ID
         {
             get { return id; }
-            set { }
+            set { id = value; }
         }
 
         //only a getter, since only readonly
         public string Name
         {
             get { return name; }
+            set { name = value; }
         }
 
         //only a getter, since only readonly
         public Race Race
         {
             get { return race; }
-            set { }
+            set { race = value; }
         }
 
         public Class Classes
         {
             get { return classes; }
-            set { }
+            set { classes = value; }
         }
         public uint Level
         {
@@ -173,6 +174,8 @@ namespace JennyCasey_Assign2
             get { return guildId; }
             set { guildId = value; }
         }
+
+        public uint Key { get; internal set; }
 
         public Dictionary<uint, Player> BuildPlayerDictionary()
         {

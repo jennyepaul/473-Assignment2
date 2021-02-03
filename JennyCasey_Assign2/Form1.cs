@@ -97,12 +97,26 @@ namespace JennyCasey_Assign2
             foreach (var i in playerDictionary)
             {
                 playerListBox.Items.Add(i.Value);
+   
+                //make sure the items in the dropdown do not repeat
+                if (!Race_Dropdown.Items.Contains(i.Value.Race))
+                {
+                    //load the drop downs with the appropriate items 
+                    Race_Dropdown.Items.Add(i.Value.Race);
+                }
+                if (!Class_Dropdown.Items.Contains(i.Value.Classes))
+                {
+                    Class_Dropdown.Items.Add(i.Value.Classes);
+                }
+
             }
             foreach (var m in guildDictionary)
             {
                 guildListBox.Items.Add(m.Value);
             }
         }
+
+
         private void LeaveGuildButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
@@ -167,6 +181,94 @@ namespace JennyCasey_Assign2
             foreach (var guild in guildDictionary)
             {
                 guildListBox.Items.Add(guild.Value);
+            }
+        }
+
+        private void AddPlayer_Button_Click(object sender, EventArgs e)
+        {
+            //PROBLEM 
+                //CAN ONLY ADD ONLY PLAYER, IF YOU TRY TO ADD ANOTHER IT TELLS YOU THE KEY IS NOT UNIQUE... 
+                //NEED TO GIVE ERROR MESSAGE IF EACH DROPDOWN DOESNT HAVE AN ITEM SELECTED
+
+            //if the name text box is filled out and the role dropdown has selected something
+            if (this.Name_Textbox.Text != "") //&& this.Race_Dropdown.SelectedIndex == -1)
+            { 
+
+                //NEED TO FIGURE OUT HOW TO MAKE UNIQUE ID HERE 
+                uint t = 0;
+                uint Unique_Id = t;
+
+                foreach (var i in playerDictionary)
+                {
+                    if (Unique_Id == i.Value.ID)
+                    {
+                        Unique_Id = t++;
+                    }
+                }
+
+                //create a new player
+                Player new_player = new Player
+                {
+                    ID = Unique_Id,
+                    Name = this.Name_Textbox.Text,
+                    //Level = 1,
+                    Classes = (Class)this.Class_Dropdown.SelectedItem,
+                    Race = (Race)this.Race_Dropdown.SelectedItem
+                    //Exp = 1,
+                    //GuildID = 0
+                };
+
+                //add the new player to the player dictionary
+                playerDictionary.Add(new_player.Key, new_player);
+
+                //print out the player values (with the new player) in the player list box
+                playerListBox.Items.Add(new_player);
+                playerListBox.Items.Add(new_player.ID);
+              
+            }
+            else
+            {
+                outputBox.Text = "Please choose a name for this new Player.";
+            }
+        }
+
+        private void Class_Dropdown_DropDownClosed(object sender, EventArgs e)
+        {
+            //clear the Role dropdown items 
+            Role_Dropdown.Items.Clear();
+
+            string[] Role_Types = { "Tank", "DPS", "Healer" };
+
+            //check to make sure an item was selected in the classes dropdown
+            if (Class_Dropdown.SelectedIndex > -1)
+            {
+                //the role dropdown is filled based on which class was selected
+                switch (Class_Dropdown.SelectedIndex)
+                {
+                    case 0: //Warrior
+                        Role_Dropdown.Items.Add(Role_Types[0]);
+                        Role_Dropdown.Items.Add(Role_Types[1]);
+                        break;
+                    case 1://Mage
+                    case 4://Warlock
+                    case 5://Rogue
+                    case 7://Hunter
+                        Role_Dropdown.Items.Add(Role_Types[1]);
+                        break;
+                    case 2: //Druid
+                    case 6: //Paladin
+                        Role_Dropdown.Items.Add(Role_Types[0]);
+                        Role_Dropdown.Items.Add(Role_Types[1]);
+                        Role_Dropdown.Items.Add(Role_Types[2]);
+                        break;
+                    case 3: //Priest
+                    case 8: //Shaman
+                        Role_Dropdown.Items.Add(Role_Types[1]);
+                        Role_Dropdown.Items.Add(Role_Types[2]);
+                        break; 
+                    default:
+                        break;
+                }
             }
         }
     }
