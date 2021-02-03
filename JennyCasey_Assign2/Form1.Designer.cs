@@ -47,8 +47,18 @@ namespace JennyCasey_Assign2
             this.DisbandGuildButton = new System.Windows.Forms.Button();
             this.GuildRosterButton = new System.Windows.Forms.Button();
             this.CreatePlayerBox = new System.Windows.Forms.GroupBox();
+            this.AddPlayer_Button = new System.Windows.Forms.Button();
+            this.Role_Dropdown = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Race_Dropdown = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Class_Dropdown = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Name_Textbox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.CreateGuildBox = new System.Windows.Forms.GroupBox();
             this.ManagementFuncBox.SuspendLayout();
+            this.CreatePlayerBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +99,6 @@ namespace JennyCasey_Assign2
             this.Playerlistbox.Name = "Playerlistbox";
             this.Playerlistbox.Size = new System.Drawing.Size(253, 388);
             this.Playerlistbox.TabIndex = 3;
-            this.Playerlistbox.Click += new System.EventHandler(this.Playerlistbox_Click_1);
             // 
             // listBox2
             // 
@@ -235,6 +244,15 @@ namespace JennyCasey_Assign2
             // 
             // CreatePlayerBox
             // 
+            this.CreatePlayerBox.Controls.Add(this.AddPlayer_Button);
+            this.CreatePlayerBox.Controls.Add(this.Role_Dropdown);
+            this.CreatePlayerBox.Controls.Add(this.label8);
+            this.CreatePlayerBox.Controls.Add(this.Race_Dropdown);
+            this.CreatePlayerBox.Controls.Add(this.label7);
+            this.CreatePlayerBox.Controls.Add(this.Class_Dropdown);
+            this.CreatePlayerBox.Controls.Add(this.label6);
+            this.CreatePlayerBox.Controls.Add(this.Name_Textbox);
+            this.CreatePlayerBox.Controls.Add(this.label5);
             this.CreatePlayerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreatePlayerBox.Location = new System.Drawing.Point(12, 206);
             this.CreatePlayerBox.Name = "CreatePlayerBox";
@@ -242,6 +260,96 @@ namespace JennyCasey_Assign2
             this.CreatePlayerBox.TabIndex = 8;
             this.CreatePlayerBox.TabStop = false;
             this.CreatePlayerBox.Text = "Create New Player";
+            // 
+            // AddPlayer_Button
+            // 
+            this.AddPlayer_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddPlayer_Button.ForeColor = System.Drawing.Color.Black;
+            this.AddPlayer_Button.Location = new System.Drawing.Point(500, 43);
+            this.AddPlayer_Button.Name = "AddPlayer_Button";
+            this.AddPlayer_Button.Size = new System.Drawing.Size(110, 26);
+            this.AddPlayer_Button.TabIndex = 16;
+            this.AddPlayer_Button.Text = "Add Player";
+            this.AddPlayer_Button.UseVisualStyleBackColor = true;
+            this.AddPlayer_Button.Click += new System.EventHandler(this.AddPlayer_Button_Click);
+            // 
+            // Role_Dropdown
+            // 
+            this.Role_Dropdown.FormattingEnabled = true;
+            this.Role_Dropdown.Location = new System.Drawing.Point(280, 94);
+            this.Role_Dropdown.Name = "Role_Dropdown";
+            this.Role_Dropdown.Size = new System.Drawing.Size(192, 28);
+            this.Role_Dropdown.TabIndex = 15;
+            this.Role_Dropdown.Click += new System.EventHandler(this.Role_Dropdown_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(278, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 17);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Role";
+            // 
+            // Race_Dropdown
+            // 
+            this.Race_Dropdown.FormattingEnabled = true;
+            this.Race_Dropdown.Location = new System.Drawing.Point(280, 43);
+            this.Race_Dropdown.Name = "Race_Dropdown";
+            this.Race_Dropdown.Size = new System.Drawing.Size(192, 28);
+            this.Race_Dropdown.TabIndex = 13;
+            this.Race_Dropdown.Click += new System.EventHandler(this.Race_Dropdown_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(277, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 17);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Race";
+            // 
+            // Class_Dropdown
+            // 
+            this.Class_Dropdown.FormattingEnabled = true;
+            this.Class_Dropdown.Location = new System.Drawing.Point(13, 93);
+            this.Class_Dropdown.Name = "Class_Dropdown";
+            this.Class_Dropdown.Size = new System.Drawing.Size(192, 28);
+            this.Class_Dropdown.TabIndex = 11;
+            this.Class_Dropdown.Click += new System.EventHandler(this.Class_Dropdown_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(10, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 17);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Class";
+            // 
+            // Name_Textbox
+            // 
+            this.Name_Textbox.Location = new System.Drawing.Point(13, 43);
+            this.Name_Textbox.Name = "Name_Textbox";
+            this.Name_Textbox.Size = new System.Drawing.Size(192, 27);
+            this.Name_Textbox.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(10, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Player Name";
             // 
             // CreateGuildBox
             // 
@@ -274,6 +382,8 @@ namespace JennyCasey_Assign2
             this.Text = "Form1";
             this.ManagementFuncBox.ResumeLayout(false);
             this.ManagementFuncBox.PerformLayout();
+            this.CreatePlayerBox.ResumeLayout(false);
+            this.CreatePlayerBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +410,15 @@ namespace JennyCasey_Assign2
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox SearchPlayer_Textbox;
         private System.Windows.Forms.Label SearchGuild;
+        private System.Windows.Forms.TextBox Name_Textbox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox Class_Dropdown;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox Role_Dropdown;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox Race_Dropdown;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button AddPlayer_Button;
     }
 }
 

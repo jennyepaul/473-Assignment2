@@ -114,6 +114,7 @@ namespace JennyCasey_Assign2
         public string Name
         {
             get { return name; }
+            set { }
         }
 
         //only a getter, since only readonly
@@ -205,6 +206,8 @@ namespace JennyCasey_Assign2
             get { return inventory; }
             set { inventory = value; }
         }
+
+        public uint Key { get; internal set; }
 
         public Dictionary<uint, Player> BuildPlayerDictionary()
         {
