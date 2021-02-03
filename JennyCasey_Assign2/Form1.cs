@@ -13,9 +13,9 @@ namespace JennyCasey_Assign2
     public partial class Form1 : Form
     {
         private Dictionary<uint, Player> playerDictionary;
-        private Dictionary<uint, string> guildDictionary;
+        private Dictionary<uint, Guild> guildDictionary;
         List<Player> players = new List<Player>();
-        List<string> guilds = new List<string>();
+        List<Guild> guilds = new List<Guild>();
 
         public Form1()
         {
@@ -23,8 +23,10 @@ namespace JennyCasey_Assign2
 
             //create a new object and build the two dictionaries
             Player newplayer = new Player();
+            Guild newguild = new Guild();
             playerDictionary = newplayer.BuildPlayerDictionary();
-            guildDictionary = newplayer.BuildGuildDictionary();
+            guildDictionary = newguild.BuildGuildDictionary();
+
 
         }
 
@@ -34,14 +36,14 @@ namespace JennyCasey_Assign2
             Player player1 = new Player();
             var players = player1.BuildPlayerDictionary();
 
-            string letter = SearchPlayer_Textbox.Text;
+            string letter = searchPlayerTextbox.Text;
 
             var list = new List<string>();
             string sub;
 
             if (letter != "")
             {
-                Playerlistbox.Items.Clear();
+                playerListBox.Items.Clear();
             }
 
             foreach (var i in players)
@@ -50,7 +52,7 @@ namespace JennyCasey_Assign2
                 list.Add(sub);
                 if (letter == sub)
                 {
-                    Playerlistbox.Items.Add(string.Format("{0} \t {1} \t {2}", i.Value.Name.PadRight(10), i.Value.Race, i.Value.Level));
+                    playerListBox.Items.Add(string.Format("{0} \t {1} \t {2}", i.Value.Name.PadRight(10), i.Value.Race, i.Value.Level));
                 }
             }
         }
@@ -60,14 +62,12 @@ namespace JennyCasey_Assign2
             //set the data source for the player and guild list box
             foreach(var i in playerDictionary)
             {
-                players.Add(i.Value);
+                playerListBox.Items.Add(i.Value);
             }
             foreach(var m in guildDictionary)
             {
-                guilds.Add(m.Value);
+                guildListBox.Items.Add(m.Value);
             }
-            Playerlistbox.DataSource = players;
-            guildListBox.DataSource = guilds;
             
         }
         private void LeaveGuildButton_Click(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace JennyCasey_Assign2
             Player player1 = new Player();
 
             //check that a player and guild has been selected
-            if(Playerlistbox.SelectedIndex == -1)
+            if(playerListBox.SelectedIndex == -1)
             {
                 outputBox.Text = "No player selected";
                 return;
@@ -83,8 +83,7 @@ namespace JennyCasey_Assign2
             else
             {
                 //parse the info
-                string[] playerText = Playerlistbox.Text.Split('\t');
-
+                string[] playerText = playerListBox.Text.Split('\t');
                 //pass the player dictionary and the player name to the leave guild function
                 player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
                 outputBox.Text = "Player successfully left guild!";
@@ -96,7 +95,7 @@ namespace JennyCasey_Assign2
             Player player1 = new Player();
             uint guildID;
             // check that a player and guild has been selected
-            if ((Playerlistbox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
+            if ((playerListBox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
             {
                 outputBox.Text = "No player and guild selected";
                 return;
@@ -104,7 +103,7 @@ namespace JennyCasey_Assign2
             else
             {
                 //parse the info
-                string[] playerText = Playerlistbox.Text.Split('\t');
+                string[] playerText = playerListBox.Text.Split('\t');
                 string[] guildText = guildListBox.Text.Split('\t');
 
                 //parse the guild ID to a uint, not a string
@@ -116,16 +115,75 @@ namespace JennyCasey_Assign2
             }
         }
 
+        private void searchGuildTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string serverFilter = searchGuildTextBox.Text;
+            //if user has entered something into the text box, let's filter
+            if(!string.IsNullOrEmpty(searchGuildTextBox.Text))
+            {
+                //clear the guild list box
+                guildListBox.Items.Clear();
+                foreach(var name in guildDictionary)
+                {
+                   //add the ones that match the criteria back in
+                    if (name.Value.Server == serverFilter )
+                    {
+                        //add the guild value back in
+                        guildListBox.Items.Add(name.Value);
+                    }
+                }
+            }
+            //else if they havent entered anything/is empty, display all items
+            else if(serverFilter == " ")
+            {
+                foreach(var guild in guildDictionary)
+                {
+                    guildListBox.Items.Add(guild.Value);
+                }
+            }
+            //otherwise display all guilds/clear search by displaying all values
+            else
+            {
+                foreach (var guild in guildDictionary)
+                {
+                    guildListBox.Items.Add(guild.Value);
+                }
+
+            }
+        }
+
         private void SearchPlayer_Textbox_TextChanged(object sender, EventArgs e)
         {
-            outputBox.Text = " ";
-            string playerName = SearchPlayer_Textbox.Text;
-
-            foreach(var i in playerDictionary)
+            string nameFilter = searchPlayerTextbox.Text;
+            //if user has entered something into the text box, let's filter
+            if (!string.IsNullOrEmpty(searchPlayerTextbox.Text))
             {
-                if(i.Value.Name == playerName)
+                //clear the player list box
+                playerListBox.Items.Clear();
+                foreach (var name in playerDictionary)
                 {
-                    outputBox.Text = (i.Value.Name);                  
+                    //add the ones that match the criteria back in
+                    if (name.Value.Name.StartsWith(nameFilter))
+                    {
+                        //add the player value back in
+                        playerListBox.Items.Add(name.Value);
+                    }
+                }
+            }
+            //else if they havent entered anything/is empty, display all items
+            else if (nameFilter == " ")
+            {
+                foreach (var player in playerDictionary)
+                {
+                    playerListBox.Items.Add(player.Value);
+                }
+            }
+            //else display all players/clear search by displaying all values
+            else
+            {
+                foreach (var player in playerDictionary)
+                {
+                    playerListBox.Items.Add(player.Value);
                 }
             }
         }

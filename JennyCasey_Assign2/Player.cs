@@ -208,13 +208,6 @@ namespace JennyCasey_Assign2
             return players;
         }
 
-        public void printGuildNames (Dictionary<uint, string>guilds)
-        {
-            foreach (var i in guilds)
-            {
-                Console.WriteLine(i.Value);
-            }
-        }
         public void LevelUp(uint experience)
         {
             uint nextLevel = (Level * 1000);
@@ -231,26 +224,7 @@ namespace JennyCasey_Assign2
             }
         }
 
-         public Dictionary<uint,string> BuildGuildDictionary()
-         {
-             string guildRecord;
-             uint uintGuildId;
-             var guilds = new Dictionary<uint, string>();
-             using (StreamReader inFile = new StreamReader("../../guilds.txt"))
-             {
-                 while ((guildRecord = inFile.ReadLine()) != null)
-                 {
-                     string[] guildInfo = guildRecord.Split('\t');
-                     string guildId = guildInfo[0];
-                     string guildName = guildInfo[1];
-                     //parse the guild ID to an unsigned integer
-                     uint.TryParse(guildId, out uintGuildId);
-                     //add the guilds to a dictionary so we can access them 
-                     guilds.Add(uintGuildId, guildName);
-                 }
-             }
-             return guilds;
-         }
+       
         public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
         {
            
