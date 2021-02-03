@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace JennyCasey_Assign2
 {
@@ -174,14 +175,24 @@ namespace JennyCasey_Assign2
 
         private void GuildRosterButton_Click(object sender, EventArgs e)
         {
+
             //clear the output box
             outputBox.Clear();
-
-            foreach(var i in playerDictionary)
-            {
-                outputBox.Text = "hey hey";
-            }
             
+            //iterate through the player dictionary, match up the guild ID in the player
+            //dictionary with the key of the guild dictionary, then append that text to output
+            foreach (var player in playerDictionary)
+            { 
+                foreach(var guild in guildDictionary)
+                {
+                    if (player.Value.GuildID == guild.Key)
+                    {
+                        string guildName = guild.Value.Name;
+                        outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
+                                    "\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName + "\n");
+                    }
+                }
+            }
         }
 
         private void DisbandGuildButton_Click(object sender, EventArgs e)

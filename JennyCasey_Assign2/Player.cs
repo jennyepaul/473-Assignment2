@@ -285,6 +285,7 @@ namespace JennyCasey_Assign2
              }
          }
          */
+         
          public int CompareTo(Object alpha)
          {
              //checking for null values

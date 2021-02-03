@@ -70,7 +70,20 @@ namespace JennyCasey_Assign2
             }
             return guilds;
         }
-
+        public string FindGuildName(Dictionary<uint,Guild> dictionary, uint ID)
+        {
+            string name;
+            //search the guild dictionary for the key and return the name
+            foreach (var keyValue in dictionary)
+            {
+                if (keyValue.Key == ID)
+                {
+                    name = keyValue.Value.Name;
+                    return name;
+                }
+            }
+            return "Guild Not found";
+        }
         public override string ToString()
         {
             return (this.Name.PadRight(30) + "\t" + "[" + this.Server + "]");
