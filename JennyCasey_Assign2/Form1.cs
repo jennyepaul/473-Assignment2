@@ -36,14 +36,14 @@ namespace JennyCasey_Assign2
             Player player1 = new Player();
             var players = player1.BuildPlayerDictionary();
 
-            string letter = SearchPlayer_Textbox.Text;
+            string letter = searchPlayerTextbox.Text;
 
             var list = new List<string>();
             string sub;
 
             if (letter != "")
             {
-                Playerlistbox.Items.Clear();
+                playerListBox.Items.Clear();
             }
 
             foreach (var i in players)
@@ -52,7 +52,7 @@ namespace JennyCasey_Assign2
                 list.Add(sub);
                 if (letter == sub)
                 {
-                    Playerlistbox.Items.Add(string.Format("{0} \t {1} \t {2}", i.Value.Name.PadRight(10), i.Value.Race, i.Value.Level));
+                    playerListBox.Items.Add(string.Format("{0} \t {1} \t {2}", i.Value.Name.PadRight(10), i.Value.Race, i.Value.Level));
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace JennyCasey_Assign2
             //set the data source for the player and guild list box
             foreach(var i in playerDictionary)
             {
-                Playerlistbox.Items.Add(i.Value);
+                playerListBox.Items.Add(i.Value);
             }
             foreach(var m in guildDictionary)
             {
@@ -75,7 +75,7 @@ namespace JennyCasey_Assign2
             Player player1 = new Player();
 
             //check that a player and guild has been selected
-            if(Playerlistbox.SelectedIndex == -1)
+            if(playerListBox.SelectedIndex == -1)
             {
                 outputBox.Text = "No player selected";
                 return;
@@ -83,7 +83,7 @@ namespace JennyCasey_Assign2
             else
             {
                 //parse the info
-                string[] playerText = Playerlistbox.Text.Split('\t');
+                string[] playerText = playerListBox.Text.Split('\t');
                 //pass the player dictionary and the player name to the leave guild function
                 player1.PlayerLeaveGuild(playerDictionary, playerText[1]);
                 outputBox.Text = "Player successfully left guild!";
@@ -95,7 +95,7 @@ namespace JennyCasey_Assign2
             Player player1 = new Player();
             uint guildID;
             // check that a player and guild has been selected
-            if ((Playerlistbox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
+            if ((playerListBox.SelectedIndex == -1) && (guildListBox.SelectedIndex == -1))
             {
                 outputBox.Text = "No player and guild selected";
                 return;
@@ -103,7 +103,7 @@ namespace JennyCasey_Assign2
             else
             {
                 //parse the info
-                string[] playerText = Playerlistbox.Text.Split('\t');
+                string[] playerText = playerListBox.Text.Split('\t');
                 string[] guildText = guildListBox.Text.Split('\t');
 
                 //parse the guild ID to a uint, not a string
@@ -115,11 +115,77 @@ namespace JennyCasey_Assign2
             }
         }
 
-        private void filterGuildButton_Click(object sender, EventArgs e)
+        private void searchGuildTextBox_TextChanged(object sender, EventArgs e)
         {
-            //if there is something entered into the search bar, then remove the guilds
-            //that do not have that server name
-            
+            string serverFilter = searchGuildTextBox.Text;
+            //if user has entered something into the text box, let's filter
+            if(!string.IsNullOrEmpty(searchGuildTextBox.Text))
+            {
+                //clear the guild list box
+                guildListBox.Items.Clear();
+                foreach(var name in guildDictionary)
+                {
+                   //add the ones that match the criteria back in
+                    if (name.Value.Server == serverFilter )
+                    {
+                        //add the guild value back in
+                        guildListBox.Items.Add(name.Value);
+                    }
+                }
+            }
+            //else if they havent entered anything/is empty, display all items
+            else if(serverFilter == " ")
+            {
+                foreach(var guild in guildDictionary)
+                {
+                    guildListBox.Items.Add(guild.Value);
+                }
+            }
+            //otherwise display all guilds/clear search by displaying all values
+            else
+            {
+                foreach (var guild in guildDictionary)
+                {
+                    guildListBox.Items.Add(guild.Value);
+                }
+
+            }
+        }
+
+        private void SearchPlayer_Textbox_TextChanged(object sender, EventArgs e)
+        {
+            string nameFilter = searchPlayerTextbox.Text;
+            //if user has entered something into the text box, let's filter
+            if (!string.IsNullOrEmpty(searchPlayerTextbox.Text))
+            {
+                //clear the player list box
+                playerListBox.Items.Clear();
+                foreach (var name in playerDictionary)
+                {
+                    //add the ones that match the criteria back in
+                    if (name.Value.Name.StartsWith(nameFilter))
+                    {
+                        //add the player value back in
+                        playerListBox.Items.Add(name.Value);
+                    }
+                }
+            }
+            //else if they havent entered anything/is empty, display all items
+            else if (nameFilter == " ")
+            {
+                foreach (var player in playerDictionary)
+                {
+                    playerListBox.Items.Add(player.Value);
+                }
+            }
+            //else display all players/clear search by displaying all values
+            else
+            {
+                foreach (var player in playerDictionary)
+                {
+                    playerListBox.Items.Add(player.Value);
+                }
+            }
         }
     }
 }
