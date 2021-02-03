@@ -188,10 +188,10 @@ namespace JennyCasey_Assign2
         {
             //PROBLEM 
                 //CAN ONLY ADD ONLY PLAYER, IF YOU TRY TO ADD ANOTHER IT TELLS YOU THE KEY IS NOT UNIQUE... 
-                //NEED TO GIVE ERROR MESSAGE IF EACH DROPDOWN DOESNT HAVE AN ITEM SELECTED
 
-            //if the name text box is filled out and the role dropdown has selected something
-            if (this.Name_Textbox.Text != "") //&& this.Race_Dropdown.SelectedIndex == -1)
+            //if the name text box has a value in it and all three dropdowns have a selected value
+            if (this.Name_Textbox.Text != "" && this.Race_Dropdown.SelectedIndex > -1 
+                && this.Class_Dropdown.SelectedIndex > -1 && this.Role_Dropdown.SelectedIndex > -1)
             { 
 
                 //NEED TO FIGURE OUT HOW TO MAKE UNIQUE ID HERE 
@@ -222,13 +222,23 @@ namespace JennyCasey_Assign2
                 playerDictionary.Add(new_player.Key, new_player);
 
                 //print out the player values (with the new player) in the player list box
-                playerListBox.Items.Add(new_player);
-                playerListBox.Items.Add(new_player.ID);
-              
+                playerListBox.Items.Add(new_player);          
             }
-            else
+            else if (this.Name_Textbox.Text == "")
             {
                 outputBox.Text = "Please choose a name for this new Player.";
+            }
+            else if (this.Race_Dropdown.SelectedIndex == -1)
+            {
+                outputBox.Text = "Please choose a race for this new Player.";
+            }
+            else if (this.Class_Dropdown.SelectedIndex == -1)
+            {
+                outputBox.Text = "Please choose a class for this new Player.";
+            }
+            else if (this.Role_Dropdown.SelectedIndex == -1)
+            {
+                outputBox.Text = "Please choose a role for this new Player.";
             }
         }
 
