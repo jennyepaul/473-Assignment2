@@ -35,6 +35,17 @@ namespace JennyCasey_Assign2
             foreach (var i in playerDictionary)
             {
                 playerListBox.Items.Add(i.Value);
+
+                //make sure the items in the dropdown do not repeat
+                if (!Race_Dropdown.Items.Contains(i.Value.Race))
+                {
+                    //load the drop downs with the appropriate items 
+                    Race_Dropdown.Items.Add(i.Value.Race);
+                }
+                if (!Class_Dropdown.Items.Contains(i.Value.Classes))
+                {
+                    Class_Dropdown.Items.Add(i.Value.Classes);
+                }
             }
             foreach (var m in guildDictionary)
             {
@@ -283,6 +294,90 @@ namespace JennyCasey_Assign2
 
             }
 
+        }
+
+
+        private void Class_Dropdown_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(Class_Dropdown.SelectedItem != null)
+            {
+                //clears the dropdown items
+                Role_Dropdown.Items.Clear();
+
+                //the role dropdown items are added based on which class was selected 
+                switch (Class_Dropdown.SelectedIndex)
+                {
+                    case 0: //Warrior
+                        Role_Dropdown.Items.Add(Role.Tank);
+                        Role_Dropdown.Items.Add(Role.DPS);
+                        break;
+                    case 1://Mage
+                    case 4://Warlock
+                    case 5://Rogue
+                    case 7://Hunter
+                        Role_Dropdown.Items.Add(Role.DPS);
+                        break;
+                    case 2: //Druid
+                    case 6: //Paladin
+                        Role_Dropdown.Items.Add(Role.Tank);
+                        Role_Dropdown.Items.Add(Role.DPS);
+                        Role_Dropdown.Items.Add(Role.Healer);
+                        break;
+                    case 3: //Priest
+                    case 8: //Shaman
+                        Role_Dropdown.Items.Add(Role.DPS);
+                        Role_Dropdown.Items.Add(Role.Healer);
+                        break;
+                }
+            }
+        }
+
+        private void AddPlayer_Button_Click(object sender, EventArgs e)
+        {
+            if (this.Name_Textbox.Text != "" && this.Race_Dropdown.SelectedIndex > -1
+                     && this.Class_Dropdown.SelectedIndex > -1 && this.Role_Dropdown.SelectedIndex > -1)
+            {
+
+                var playerName = Name_Textbox.Text;
+                Class playerClass = (Class)Class_Dropdown.SelectedItem;
+                Race playerRace = (Race)Race_Dropdown.SelectedItem;
+                Role playerRole = (Role)Role_Dropdown.SelectedItem;
+
+                //generate a random ID
+                Random randomID = new Random();
+                uint playerID = (uint)randomID.Next(00000000, 100000000);
+
+                //create a new player
+                Player newPlayer = new Player(playerID, playerName, playerRace, playerClass, 0, 0, 0);
+
+                //add that player to the listbox and dictionary
+                playerListBox.Items.Add(newPlayer);
+                playerDictionary.Add(playerID, newPlayer);
+
+
+                //clears the textbox and the dropdown boxes after new player is added
+                Name_Textbox.Text = "";
+                Class_Dropdown.SelectedIndex = -1;
+                Race_Dropdown.SelectedIndex = -1;
+                Role_Dropdown.SelectedIndex = -1;
+            }
+            //error messages if either the name text box or any of the dropdowns have no values
+            else if (this.Name_Textbox.Text == "")
+            {
+                outputBox.Text = "Please choose a name for this new Player.";
+            }
+            else if (this.Race_Dropdown.SelectedIndex == -1)
+            {
+                outputBox.Text = "Please choose a race for this new Player.";
+            }
+            else if (this.Class_Dropdown.SelectedIndex == -1)
+            {
+                outputBox.Text = "Please choose a class for this new Player.";
+            }
+            else if (this.Role_Dropdown.SelectedIndex == -1)
+            {
+                outputBox.Text = "Please choose a role for this new Player.";
+            }
         }
     }
 }

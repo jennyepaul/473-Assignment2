@@ -1,10 +1,4 @@
-﻿/* CSCI 473
- * Assignment 1
- * TEAM: JennyCasey
- * Contributors: Jennifer Paul (z1878099) and Casey McDermott (z1878096) 
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -13,6 +7,8 @@ namespace JennyCasey_Assign2
 {
     public enum Race { Orc, Troll, Tauren, Forsaken };
     public enum Class { Warrior, Mage, Druid, Priest, Warlock, Rogue, Paladin, Hunter, Shaman };
+
+    public enum Role { Tank, Healer, DPS };
 
     /**************************************************************************************************************************
      * Class - Player
@@ -60,10 +56,10 @@ namespace JennyCasey_Assign2
     {
         //constants for program
         private static uint MAX_LEVEL = 60;
-        private readonly uint id;
-        private readonly string name;
-        private readonly Race race;
-        private readonly Class classes;
+        private uint id;
+        private string name;
+        private Race race;
+        private Class classes;
         private uint level;
         private uint exp;
         private uint guildId;
@@ -102,26 +98,27 @@ namespace JennyCasey_Assign2
         public uint ID
         {
             get { return id; }
-            set { }
+            set { id = value; }
         }
 
         //only a getter, since only readonly
         public string Name
         {
             get { return name; }
+            set { name = value; }
         }
 
         //only a getter, since only readonly
         public Race Race
         {
             get { return race; }
-            set { }
+            set { race = value; }
         }
 
         public Class Classes
         {
             get { return classes; }
-            set { }
+            set { classes = value; }
         }
         public uint Level
         {
@@ -224,9 +221,9 @@ namespace JennyCasey_Assign2
             }
         }
 
-      
+
         public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
-        { 
+        {
             //search through the players dictionary for the username entered
             foreach (var player in dictionary)
             {
@@ -236,70 +233,70 @@ namespace JennyCasey_Assign2
                     dictionary[player.Key].GuildID = 0;
                 }
             }
-           
+
         }
-          public void PlayerJoinGuild(Dictionary<uint, Player> dictionary, string playerName, uint guildID)
-          {
-              //search for the name that the user entered in the players dictionary
-              foreach (var player in dictionary)
-              {
+        public void PlayerJoinGuild(Dictionary<uint, Player> dictionary, string playerName, uint guildID)
+        {
+            //search for the name that the user entered in the players dictionary
+            foreach (var player in dictionary)
+            {
                 //if we find the player name in the dictionary
-                  if (player.Value.Name == playerName)
-                  {                     
-                      //set the guild to the guild ID and print out that player joined
-                      dictionary[player.Key].GuildID = guildID;
-                  }
-              }
-          }
-         /* 
-         public void AwardExperience(Dictionary<uint, Player> dictionary)
-         {
-             bool playerIsFound = false;
-             //get the player name then do a lookup in the dictionary for that player
-             Console.Write("Enter the player name: ");
-             string playerName4 = Console.ReadLine();
-             //get the experience to award then add that to the exp the player already has
-             Console.Write("Enter the amount of experience to award: ");
-             string experience = Console.ReadLine();
-             uint uintExperience;
-             uint.TryParse(experience, out uintExperience);
-             //goes through the players dictionart
-             foreach (var player in dictionary)
-             {
-                 //if the name the user entered is a value in the dictionary, then we want to add experience
-                 //but only if the level is less than 60 (since that is MAX_LEVEL)
-                 if (player.Value.Name == playerName4)
-                 {
-                     playerIsFound = true;
-                     dictionary[player.Key].Exp = uintExperience;
-                     //if enough experience was entered, we may need to level up
-                     if ((uintExperience > 1000) && (dictionary[player.Key].Level < 60))
-                     {
-                         Console.WriteLine("Ding!" + "\n" + "Ding!" + "\n" + "Ding!");
-                         dictionary[player.Key].LevelUp(uintExperience);
-                     }
-                 }
-             }
-             if (playerIsFound == false)
-             {
-                 Console.WriteLine("Unknown player");
-             }
-         }
-         */
-         
-         public int CompareTo(Object alpha)
-         {
-             //checking for null values
-             if (alpha == null) throw new ArgumentNullException();
-             //typecasting to an Item
-             Player playerToCompare = alpha as Player;
-             // Protect against a failed typecasting
-             if (playerToCompare != null)
-                 return name.CompareTo(playerToCompare.name);
-             else
-                 throw new ArgumentException("[Player]:CompareTo argument is not an Player");
-         }
-         
+                if (player.Value.Name == playerName)
+                {
+                    //set the guild to the guild ID and print out that player joined
+                    dictionary[player.Key].GuildID = guildID;
+                }
+            }
+        }
+        /* 
+        public void AwardExperience(Dictionary<uint, Player> dictionary)
+        {
+            bool playerIsFound = false;
+            //get the player name then do a lookup in the dictionary for that player
+            Console.Write("Enter the player name: ");
+            string playerName4 = Console.ReadLine();
+            //get the experience to award then add that to the exp the player already has
+            Console.Write("Enter the amount of experience to award: ");
+            string experience = Console.ReadLine();
+            uint uintExperience;
+            uint.TryParse(experience, out uintExperience);
+            //goes through the players dictionart
+            foreach (var player in dictionary)
+            {
+                //if the name the user entered is a value in the dictionary, then we want to add experience
+                //but only if the level is less than 60 (since that is MAX_LEVEL)
+                if (player.Value.Name == playerName4)
+                {
+                    playerIsFound = true;
+                    dictionary[player.Key].Exp = uintExperience;
+                    //if enough experience was entered, we may need to level up
+                    if ((uintExperience > 1000) && (dictionary[player.Key].Level < 60))
+                    {
+                        Console.WriteLine("Ding!" + "\n" + "Ding!" + "\n" + "Ding!");
+                        dictionary[player.Key].LevelUp(uintExperience);
+                    }
+                }
+            }
+            if (playerIsFound == false)
+            {
+                Console.WriteLine("Unknown player");
+            }
+        }
+        */
+
+        public int CompareTo(Object alpha)
+        {
+            //checking for null values
+            if (alpha == null) throw new ArgumentNullException();
+            //typecasting to an Item
+            Player playerToCompare = alpha as Player;
+            // Protect against a failed typecasting
+            if (playerToCompare != null)
+                return name.CompareTo(playerToCompare.name);
+            else
+                throw new ArgumentException("[Player]:CompareTo argument is not an Player");
+        }
+
         public override string ToString()
         {
             return (this.name.PadRight(15) + "\t" + this.Classes + "\t" + this.Level);
