@@ -60,15 +60,7 @@ namespace JennyCasey_Assign2
                 {
                     guildListBox.Items.Add(guild.Value);
                 }
-            }           
-            //otherwise display all guilds/clear search by displaying all values
-            else
-            {
-                foreach (var guild in guildDictionary)
-                {
-                    guildListBox.Items.Add(guild.Value);
-                }
-            }         
+            }                  
 
             //********************************
             //PLAYER TEXT BOX SEARCH CRITERA
@@ -90,14 +82,6 @@ namespace JennyCasey_Assign2
             }
             //else if they havent entered anything/is empty, display all items
             else if (nameFilter == " ")
-            {
-                foreach (var player in playerDictionary)
-                {
-                    playerListBox.Items.Add(player.Value);
-                }
-            }
-            //else display all players/clear search by displaying all values
-            else
             {
                 foreach (var player in playerDictionary)
                 {
@@ -161,6 +145,28 @@ namespace JennyCasey_Assign2
                 //pass the player dictionary, player name, and guildID to function to join a guild
                 player1.PlayerJoinGuild(playerDictionary, playerText[1], guildID);
                 outputBox.Text = "Player successfully joined the guild!";
+            }
+        }
+
+        private void clearSearchCriteria_Click(object sender, EventArgs e)
+        {
+            //clear both the list boxes, so we can repopulate
+            guildListBox.Items.Clear();
+            playerListBox.Items.Clear();
+
+            //reset the textbox
+            searchPlayerTextbox.Text = " ";
+            searchGuildTextBox.Text = " ";
+            //repopulate playerListBox
+            foreach (var player in playerDictionary)
+            {
+                playerListBox.Items.Add(player.Value);
+            }
+
+            //repopulate guildListBox
+            foreach (var guild in guildDictionary)
+            {
+                guildListBox.Items.Add(guild.Value);
             }
         }
     }
