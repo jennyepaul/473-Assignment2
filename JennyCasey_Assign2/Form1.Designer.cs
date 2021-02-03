@@ -65,9 +65,9 @@ namespace JennyCasey_Assign2
             // 
             // outputBox
             // 
-            this.outputBox.Location = new System.Drawing.Point(25, 518);
+            this.outputBox.Location = new System.Drawing.Point(12, 518);
             this.outputBox.Name = "outputBox";
-            this.outputBox.Size = new System.Drawing.Size(1247, 130);
+            this.outputBox.Size = new System.Drawing.Size(1260, 130);
             this.outputBox.TabIndex = 1;
             this.outputBox.Text = "";
             // 
