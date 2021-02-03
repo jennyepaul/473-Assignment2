@@ -197,23 +197,92 @@ namespace JennyCasey_Assign2
                 else
                 {
                     outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
-                                   "\tLevel: " + player.Value.Level + "\n");
+                                   "\tLevel: " + player.Value.Level + "\t\tGuild: NONE \n");
                 }               
             }
         }
 
         private void DisbandGuildButton_Click(object sender, EventArgs e)
         {
+            int playerCount = 0;
+
+            //add try-catch block to catch if no guildList box item selected
             uint guildIDToFind = ((Guild)guildListBox.SelectedItem).ID;
+
+            //not sure if we have to verify its the right server?
+            //string guildServerToFind = ((Guild)guildListBox.SelectedItem).Server;
             //select guild then click this button
             //if the guild name selected is not null, then we must remove it from the list
             //then set the guilID in the player dictionary where this was to 0 and remove it from the guild dictionary
 
+            
             //remove the selected item from the listbox
             if (guildListBox.SelectedItem != null)
             {
                 guildListBox.Items.Remove(guildListBox.SelectedItem);
             }
+
+            //remove the guild from the players info
+            foreach(var player in playerDictionary)
+            {
+                if(guildIDToFind == player.Value.GuildID)
+                {
+                    playerCount++;
+                    player.Value.GuildID = 0;
+                }
+            }
+            outputBox.Clear();
+            foreach (var guild in guildDictionary)
+            {
+                if (guildIDToFind == guild.Key)
+                {
+                    outputBox.AppendText(playerCount + " players have been disbanded from " + guild.Value.Name + "\t[" 
+                                            + guild.Value.Server + "]\n");
+                }              
+            }            
+        }
+
+        private void playerListBox_DoubleClick(object sender, EventArgs e)
+        {
+            //clear the output box
+            outputBox.Clear();
+            if(playerListBox.SelectedItem != null)
+            {
+                //get the name of the selected player
+                string playerName = ((Player)playerListBox.SelectedItem).Name;
+
+                //NEED TO FIND A WAY TO MAKE A FUNCTION OF THIS SINCE USING THIS PRINT OUT
+                //IN A FEW SPOTS
+                foreach (var player in playerDictionary)
+                {
+                    //Ssearching for match of player name of selected item in dictionary, if we find a match
+                    //check if they have an associated guild, if so print out info including guild name
+                    if (playerName == player.Value.Name)
+                    {
+                        if (player.Value.GuildID > 0)
+                        {
+                            foreach (var guild in guildDictionary)
+                            {
+                                if (player.Value.GuildID == guild.Key)
+                                {
+                                    string guildName = guild.Value.Name;
+                                    outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
+                                            "\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName + "\n");
+                                }
+                            }
+                        }
+                        //else they don't have a guild associated with it, so don't print guild info
+                        else
+                        {
+                            outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
+                                           "\tLevel: " + player.Value.Level + "\n");
+                        }
+
+                    }
+                }
+
+            }
+
         }
     }
 }

@@ -90,6 +90,7 @@ namespace JennyCasey_Assign2
             this.playerListBox.Name = "playerListBox";
             this.playerListBox.Size = new System.Drawing.Size(284, 388);
             this.playerListBox.TabIndex = 3;
+            this.playerListBox.DoubleClick += new System.EventHandler(this.playerListBox_DoubleClick);
             // 
             // guildListBox
             // 
