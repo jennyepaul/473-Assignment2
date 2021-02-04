@@ -149,20 +149,32 @@ namespace JennyCasey_Assign2
                 player1.PlayerLeaveGuild(playerDictionary, playerName);
                 outputBox.Text = "Player successfully left guild!";
             }
+
+            //reset the index 
+            playerListBox.SelectedIndex = -1;
         }
         private void JoinGuildButton_Click(object sender, EventArgs e)
         {
+            //clear any previous data in the output box
+            outputBox.Clear();
+
             Player player1 = new Player();
-            // check that a player and guild has been selected
-            if ((playerListBox.SelectedItem.Equals(null)) && (guildListBox.SelectedItem.Equals(null)))
+
+            // check that a player and guild has been selected, if one or the other hasn't been selected
+            //output the appropriate error message
+            if ((playerListBox.SelectedIndex == -1 ) || (guildListBox.SelectedIndex == -1))
             {
-                outputBox.Text = "No player and guild selected";
-                return;
+                if(playerListBox.SelectedIndex == -1)
+                {
+                    outputBox.Text = "No player selected, please select a player";
+                }
+                if(guildListBox.SelectedIndex == -1)
+                {
+                    outputBox.Text = "No guild selected, please select a guild";
+                }
             }
             else
             {
-                //need to put some catch or double check, cause if user doesnt click a guild we error out here
-                //parse the info
                 string playerName = ((Player)playerListBox.SelectedItem).Name;
                 uint id = ((Guild)guildListBox.SelectedItem).ID;
 
@@ -171,6 +183,10 @@ namespace JennyCasey_Assign2
                 player1.PlayerJoinGuild(playerDictionary, playerName, id);
                 outputBox.Text = "Player successfully joined the guild!";
             }
+
+            //reset the player selected index and guild selected index
+            playerListBox.SelectedIndex = -1;
+            guildListBox.SelectedIndex = -1;
         }
 
         private void clearSearchCriteria_Click(object sender, EventArgs e)
@@ -197,72 +213,85 @@ namespace JennyCasey_Assign2
 
         private void GuildRosterButton_Click(object sender, EventArgs e)
         {
-
+            Guild newGuild = new Guild();
             //clear the output box
             outputBox.Clear();
-            
-            //iterate through the player dictionary, match up the guild ID in the player
-            //dictionary with the key of the guild dictionary, then append that text to output
-           foreach (var player in playerDictionary)
-           { 
-                if (player.Value.GuildID > 0)
+
+            //if the user has picked a guild to print the roster for, then print the info
+            if (guildListBox.SelectedIndex != -1)
+            {
+                //get the guild ID, name, and server of the selected item
+                uint id = ((Guild)guildListBox.SelectedItem).ID;
+                string guildName = ((Guild)guildListBox.SelectedItem).Name;
+                string server = ((Guild)guildListBox.SelectedItem).Server;
+
+                outputBox.AppendText("Guild Listing for " + guildName.PadRight(30) + "\t" + "[" + server + "]\n");
+                outputBox.AppendText("--------------------------------------------------------------------------\n");
+
+                //go through the player dictionary and print out any player that is part of that guild
+                foreach (var player in playerDictionary)
                 {
-                    foreach (var guild in guildDictionary)
+                    //if the player guild ID matches the one selected, then find the guild ID in the dictionary
+                    //and print out the info
+                    if (player.Value.GuildID == id)
                     {
-                        if (player.Value.GuildID == guild.Key)
-                        {
-                            string guildName = guild.Value.Name;
-                            outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: {3,-10} \n", 
-                                player.Value.Name, player.Value.Race, player.Value.Level, guildName));
-                        }
-                    }                       
+                        outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: {3,-10} \n",
+                              player.Value.Name, player.Value.Race, player.Value.Level, guildName));
+                    }
                 }
-                else
-                {
-                    outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: NONE \n",
-                        player.Value.Name, player.Value.Race, player.Value.Level));
-                }               
             }
+            else
+            {
+                outputBox.Text = "Please select a guild to see its roster";
+            }
+
+            //reset the selected index
+            guildListBox.SelectedIndex = -1;
         }
 
         private void DisbandGuildButton_Click(object sender, EventArgs e)
         {
-            int playerCount = 0;
+            outputBox.Clear();
 
-            //add try-catch block to catch if no guildList box item selected
-            uint guildIDToFind = ((Guild)guildListBox.SelectedItem).ID;
-
-            //not sure if we have to verify its the right server?
-            //string guildServerToFind = ((Guild)guildListBox.SelectedItem).Server;
-            //select guild then click this button
-            //if the guild name selected is not null, then we must remove it from the list
-            //then set the guilID in the player dictionary where this was to 0 and remove it from the guild dictionary
-
-            
-            //remove the selected item from the listbox
-            if (guildListBox.SelectedItem != null)
+            //check to make sure the user has picked a guild to disband
+            if(guildListBox.SelectedIndex != -1)
             {
-                guildListBox.Items.Remove(guildListBox.SelectedItem);
-            }
+                int playerCount = 0;
 
-            //remove the guild from the players info
-            foreach(var player in playerDictionary)
-            {
-                if(guildIDToFind == player.Value.GuildID)
+                //add try-catch block to catch if no guildList box item selected
+                uint guildIDToFind = ((Guild)guildListBox.SelectedItem).ID;
+                //remove the selected item from the listbox
+                if (guildListBox.SelectedItem != null)
                 {
-                    playerCount++;
-                    player.Value.GuildID = 0;
+                    guildListBox.Items.Remove(guildListBox.SelectedItem);
+                }
+
+                //remove the guild from the players info
+                foreach (var player in playerDictionary)
+                {
+                    if (guildIDToFind == player.Value.GuildID)
+                    {
+                        playerCount++;
+                        player.Value.GuildID = 0;
+                    }
+                }
+                foreach (var guild in guildDictionary)
+                {
+                    if (guildIDToFind == guild.Key)
+                    {
+                        outputBox.AppendText(playerCount + " players have been disbanded from " + guild.Value.Name + "\t["
+                                                + guild.Value.Server + "]\n");
+                    }
                 }
             }
-            outputBox.Clear();
-            foreach (var guild in guildDictionary)
+            //if they have not picked a guild, output error
+            else
             {
-                if (guildIDToFind == guild.Key)
-                {
-                    outputBox.AppendText(playerCount + " players have been disbanded from " + guild.Value.Name + "\t[" 
-                                            + guild.Value.Server + "]\n");
-                }              
-            }            
+                outputBox.Text = "Please select a guild first, before disbanding";
+            }
+
+            //reset the selected index
+            guildListBox.SelectedIndex = -1;
         }
 
         private void playerListBox_DoubleClick(object sender, EventArgs e)
@@ -289,23 +318,23 @@ namespace JennyCasey_Assign2
                                 if (player.Value.GuildID == guild.Key)
                                 {
                                     string guildName = guild.Value.Name;
-                                    outputBox.AppendText("Name: " + player.Value.Name + "\tRace: " + player.Value.Race +
-                                          "\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName + "\n");
+                                    outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: {3,-10} \n",
+                                        player.Value.Name, player.Value.Race, player.Value.Level, guildName));
                                 }
                             }
                         }
                         //else they don't have a guild associated with it, so don't print guild info
                         else
                         {
-                             outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
-                             "\tLevel: " + player.Value.Level + "\n");
+                            outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: NONE \n",
+                                player.Value.Name, player.Value.Race, player.Value.Level));
                         }
-
                     }
                 }
-
             }
 
+            //reset the selected index for the player
+            playerListBox.SelectedIndex = -1;
         }
 
         private void Class_Dropdown_SelectedValueChanged(object sender, EventArgs e)
