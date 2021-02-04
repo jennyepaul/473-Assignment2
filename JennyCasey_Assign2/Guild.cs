@@ -8,7 +8,7 @@ namespace JennyCasey_Assign2
 {
     public enum Type { Casual, Questing, Mythic, Raiding, PVP };
 
-    class Guild
+    class Guild : IComparable
     {
         private uint id;
         private string name;
@@ -45,8 +45,6 @@ namespace JennyCasey_Assign2
             set { server = value; }
         }
         
-      
-
         //create a dictionary to store guild info
         public Dictionary<uint, Guild> BuildGuildDictionary()
         {
@@ -64,6 +62,7 @@ namespace JennyCasey_Assign2
 
                     //parse the guild ID to an unsigned integer
                     uint.TryParse(guildId, out uintGuildId);
+
                     //add the guilds to a dictionary so we can access them
                     Guild newGuild = new Guild(uintGuildId, guildName, guildServer);
                     guilds.Add(uintGuildId, newGuild);
@@ -71,20 +70,22 @@ namespace JennyCasey_Assign2
             }
             return guilds;
         }
-        public string FindGuildName(Dictionary<uint,Guild> dictionary, uint ID)
+
+        public int CompareTo(Object alpha)
         {
-            string name;
-            //search the guild dictionary for the key and return the name
-            foreach (var keyValue in dictionary)
-            {
-                if (keyValue.Key == ID)
-                {
-                    name = keyValue.Value.Name;
-                    return name;
-                }
-            }
-            return "Guild Not found";
+            //checking for null values
+            if (alpha == null) throw new ArgumentNullException();
+
+            //typecasting to a guild
+            Guild guildToCompare = alpha as Guild;
+
+            // Protect against a failed typecasting
+            if (guildToCompare != null)
+                return name.CompareTo(guildToCompare.name);
+            else
+                throw new ArgumentException("[Guild]:CompareTo argument is not a Guild");
         }
+
         public override string ToString()
         {
             return (this.Name.PadRight(30) + "\t" + "[" + this.Server + "]");

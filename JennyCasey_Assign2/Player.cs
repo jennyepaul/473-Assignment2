@@ -22,7 +22,7 @@ namespace JennyCasey_Assign2
      * - The player class has an IComparable interface in order to sort the player based on their names.
      * - Player Class Methods: 
      */
-    public class Player //: IComparable
+    public class Player : IComparable
     {
         //constants for program
         private static uint MAX_LEVEL = 60;
@@ -170,23 +170,6 @@ namespace JennyCasey_Assign2
             return players;
         }
 
-        public void LevelUp(uint experience)
-        {
-            uint nextLevel = (Level * 1000);
-            //gaining a level is when experience = (current level * 1000);
-            //so if we were at level 3 and wanted to go to level 4 we would need 3000 exp
-            if (experience >= nextLevel)
-            {
-                experience /= nextLevel;
-                Level += experience;
-            }
-            else
-            {
-                Level += 0;
-            }
-        }
-
-
         public void PlayerLeaveGuild(Dictionary<uint, Player> dictionary, string playerName)
         {
             //search through the players dictionary for the username entered
@@ -213,41 +196,6 @@ namespace JennyCasey_Assign2
                 }
             }
         }
-        /* 
-        public void AwardExperience(Dictionary<uint, Player> dictionary)
-        {
-            bool playerIsFound = false;
-            //get the player name then do a lookup in the dictionary for that player
-            Console.Write("Enter the player name: ");
-            string playerName4 = Console.ReadLine();
-            //get the experience to award then add that to the exp the player already has
-            Console.Write("Enter the amount of experience to award: ");
-            string experience = Console.ReadLine();
-            uint uintExperience;
-            uint.TryParse(experience, out uintExperience);
-            //goes through the players dictionart
-            foreach (var player in dictionary)
-            {
-                //if the name the user entered is a value in the dictionary, then we want to add experience
-                //but only if the level is less than 60 (since that is MAX_LEVEL)
-                if (player.Value.Name == playerName4)
-                {
-                    playerIsFound = true;
-                    dictionary[player.Key].Exp = uintExperience;
-                    //if enough experience was entered, we may need to level up
-                    if ((uintExperience > 1000) && (dictionary[player.Key].Level < 60))
-                    {
-                        Console.WriteLine("Ding!" + "\n" + "Ding!" + "\n" + "Ding!");
-                        dictionary[player.Key].LevelUp(uintExperience);
-                    }
-                }
-            }
-            if (playerIsFound == false)
-            {
-                Console.WriteLine("Unknown player");
-            }
-        }
-        */
 
         public int CompareTo(Object alpha)
         {

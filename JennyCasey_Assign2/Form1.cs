@@ -128,7 +128,6 @@ namespace JennyCasey_Assign2
                 }
             }
         }
-
         private void LeaveGuildButton_Click(object sender, EventArgs e)
         {
             Player player1 = new Player();
@@ -188,7 +187,6 @@ namespace JennyCasey_Assign2
             playerListBox.SelectedIndex = -1;
             guildListBox.SelectedIndex = -1;
         }
-
         private void clearSearchCriteria_Click(object sender, EventArgs e)
         {
             //clear both the list boxes, so we can repopulate
@@ -210,7 +208,6 @@ namespace JennyCasey_Assign2
                 guildListBox.Items.Add(guild.Value);
             }
         }
-
         private void GuildRosterButton_Click(object sender, EventArgs e)
         {
             Guild newGuild = new Guild();
@@ -248,7 +245,6 @@ namespace JennyCasey_Assign2
             //reset the selected index
             guildListBox.SelectedIndex = -1;
         }
-
         private void DisbandGuildButton_Click(object sender, EventArgs e)
         {
             outputBox.Clear();
@@ -293,7 +289,6 @@ namespace JennyCasey_Assign2
             //reset the selected index
             guildListBox.SelectedIndex = -1;
         }
-
         private void playerListBox_DoubleClick(object sender, EventArgs e)
         {
             //clear the output box
@@ -336,7 +331,6 @@ namespace JennyCasey_Assign2
             //reset the selected index for the player
             playerListBox.SelectedIndex = -1;
         }
-
         private void Class_Dropdown_SelectedValueChanged(object sender, EventArgs e)
         {
             if(Class_Dropdown.SelectedItem != null)
@@ -371,7 +365,6 @@ namespace JennyCasey_Assign2
                 }
             }
         }
-
         private void AddPlayer_Button_Click(object sender, EventArgs e)
         {
             outputBox.Clear();
@@ -429,7 +422,6 @@ namespace JennyCasey_Assign2
             }
             
         }
-
         private void addGuildButton_Click(object sender, EventArgs e)
         {
             outputBox.Clear();
