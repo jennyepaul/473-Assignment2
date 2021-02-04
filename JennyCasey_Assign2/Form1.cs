@@ -212,15 +212,19 @@ namespace JennyCasey_Assign2
                         if (player.Value.GuildID == guild.Key)
                         {
                             string guildName = guild.Value.Name;
-                            outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
-                                    "\t\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName.PadLeft(6) + "\n");
+                            //outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
+                            //      "\t\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName.PadLeft(6) + "\n");
+                            outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: {3,-10} \n", 
+                                player.Value.Name, player.Value.Race, player.Value.Level, guildName));
                         }
                     }                       
                 }
                 else
                 {
-                    outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
-                                   "\t\tLevel: " + player.Value.Level + "\t\tGuild: NONE \n");
+                    //outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
+                     //              "\t\tLevel: " + player.Value.Level + "\t\tGuild: NONE \n");
+                    outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: NONE \n",
+                        player.Value.Name, player.Value.Race, player.Value.Level));
                 }               
             }
         }
@@ -289,16 +293,16 @@ namespace JennyCasey_Assign2
                                 if (player.Value.GuildID == guild.Key)
                                 {
                                     string guildName = guild.Value.Name;
-                                    outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
-                                            "\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName + "\n");
+                                    outputBox.AppendText("Name: " + player.Value.Name + "\tRace: " + player.Value.Race +
+                                          "\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName + "\n");
                                 }
                             }
                         }
                         //else they don't have a guild associated with it, so don't print guild info
                         else
                         {
-                            outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
-                                           "\tLevel: " + player.Value.Level + "\n");
+                             outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
+                             "\tLevel: " + player.Value.Level + "\n");
                         }
 
                     }
