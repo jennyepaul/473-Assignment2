@@ -212,8 +212,6 @@ namespace JennyCasey_Assign2
                         if (player.Value.GuildID == guild.Key)
                         {
                             string guildName = guild.Value.Name;
-                            //outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
-                            //      "\t\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName.PadLeft(6) + "\n");
                             outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: {3,-10} \n", 
                                 player.Value.Name, player.Value.Race, player.Value.Level, guildName));
                         }
@@ -221,8 +219,6 @@ namespace JennyCasey_Assign2
                 }
                 else
                 {
-                    //outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
-                     //              "\t\tLevel: " + player.Value.Level + "\t\tGuild: NONE \n");
                     outputBox.AppendText(String.Format("Name: {0,-20} \t Race: {1,-10} Level: {2,-5} Guild: NONE \n",
                         player.Value.Name, player.Value.Race, player.Value.Level));
                 }               
