@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 namespace JennyCasey_Assign2
 {
+    public enum Type { Casual, Questing, Mythic, Raiding, PVP };
+
     class Guild
     {
         private uint id;
@@ -17,7 +19,13 @@ namespace JennyCasey_Assign2
             name = "";
             server = "";
         }
-
+        //alternate constructor
+        public Guild(uint id, string name, string server)
+        {
+            this.id = id;
+            this.name = name;
+            this.server = server;
+        }
         public uint ID
         {
             //free read/write acess so getter and setters
@@ -36,14 +44,8 @@ namespace JennyCasey_Assign2
             get { return server; }
             set { server = value; }
         }
-        //alternate constructor
-        public Guild(uint id, string name, string server)
-        {
-            this.id = id;
-            this.name = name;
-            this.server = server;
-        }
-
+        
+      
 
         //create a dictionary to store guild info
         public Dictionary<uint, Guild> BuildGuildDictionary()

@@ -55,6 +55,18 @@ namespace JennyCasey_Assign2
             //sort the list boxes
             playerListBox.Sorted = true;
             guildListBox.Sorted = true;
+
+            //set up everything to get ready to add a new guild
+            serverDropDown.Items.Add("Beta4Azeroth");
+            serverDropDown.Items.Add("TKWasASetback");
+            serverDropDown.Items.Add("ZappyBoi");
+
+            guildTypeDropDown.Items.Add(Type.Casual);
+            guildTypeDropDown.Items.Add(Type.Mythic);
+            guildTypeDropDown.Items.Add(Type.PVP);
+            guildTypeDropDown.Items.Add(Type.Questing);
+            guildTypeDropDown.Items.Add(Type.Raiding);
+
         }
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
@@ -200,15 +212,15 @@ namespace JennyCasey_Assign2
                         if (player.Value.GuildID == guild.Key)
                         {
                             string guildName = guild.Value.Name;
-                            outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
-                                    "\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName + "\n");
+                            outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
+                                    "\t\tLevel: " + player.Value.Level + "\t\tGuild: " + guildName.PadLeft(6) + "\n");
                         }
                     }                       
                 }
                 else
                 {
-                    outputBox.AppendText("Name: " + player.Value.Name.PadRight(20) + "\tRace: " + player.Value.Race +
-                                   "\tLevel: " + player.Value.Level + "\t\tGuild: NONE \n");
+                    outputBox.AppendText("Name: " + player.Value.Name.PadRight(25) + "\tRace: " + player.Value.Race +
+                                   "\t\tLevel: " + player.Value.Level + "\t\tGuild: NONE \n");
                 }               
             }
         }
@@ -296,7 +308,6 @@ namespace JennyCasey_Assign2
 
         }
 
-
         private void Class_Dropdown_SelectedValueChanged(object sender, EventArgs e)
         {
             if(Class_Dropdown.SelectedItem != null)
@@ -334,8 +345,11 @@ namespace JennyCasey_Assign2
 
         private void AddPlayer_Button_Click(object sender, EventArgs e)
         {
-            if (this.Name_Textbox.Text != "" && this.Race_Dropdown.SelectedIndex > -1
-                     && this.Class_Dropdown.SelectedIndex > -1 && this.Role_Dropdown.SelectedIndex > -1)
+            outputBox.Clear();
+            //if there is text in the name text box, and all drop downs have an item selected, then we
+            //can make the new player
+            if (Name_Textbox.Text != "" && Race_Dropdown.SelectedIndex > -1
+                     && Class_Dropdown.SelectedIndex > -1 && Role_Dropdown.SelectedIndex > -1)
             {
 
                 var playerName = Name_Textbox.Text;
@@ -360,24 +374,84 @@ namespace JennyCasey_Assign2
                 Class_Dropdown.SelectedIndex = -1;
                 Race_Dropdown.SelectedIndex = -1;
                 Role_Dropdown.SelectedIndex = -1;
+
+                //output a success message
+                outputBox.AppendText("New player '" + playerName + "' successfully created!");
             }
-            //error messages if either the name text box or any of the dropdowns have no values
-            else if (this.Name_Textbox.Text == "")
+            //else we are missing some needed info, so identify what is missing and output error message
+            else
             {
-                outputBox.Text = "Please choose a name for this new Player.";
+                if (Name_Textbox.Text == "")
+                {
+                    outputBox.Text = "Please choose a name for this new Player.";
+                }
+                if (Race_Dropdown.SelectedIndex == -1)
+                {
+                    outputBox.Text = "Please choose a race for this new Player.";
+                }
+                if (Class_Dropdown.SelectedIndex == -1)
+                {
+                    outputBox.Text = "Please choose a class for this new Player.";
+                }
+                if (Role_Dropdown.SelectedIndex == -1)
+                {
+                    outputBox.Text = "Please choose a role for this new Player.";
+                }
             }
-            else if (this.Race_Dropdown.SelectedIndex == -1)
+            
+        }
+
+        private void addGuildButton_Click(object sender, EventArgs e)
+        {
+            outputBox.Clear();
+            //if user has given values for all needed info, we can go ahead with creating the guild
+            if((guildNameBox.Text != "") && (serverDropDown.SelectedIndex != -1) && (guildTypeDropDown.SelectedIndex != -1))
             {
-                outputBox.Text = "Please choose a race for this new Player.";
+                //get the name entered the the server that was chosen
+                var guildName = guildNameBox.Text;
+                string server = serverDropDown.Text;
+
+                //might have to add to guild class a space for the type of guild?
+
+                //generate a random ID
+                Random randomID = new Random();
+                uint guildID = (uint)randomID.Next(00000000, 100000000);
+
+                //create a new guild
+                Guild newGuild = new Guild(guildID, guildName, server);
+
+                //add that guild to the listbox and dictionary
+                guildListBox.Items.Add(newGuild);
+                guildDictionary.Add(guildID, newGuild);
+
+                //clear the textbox once they added
+                guildNameBox.Text = " ";
+
+                //clear both drop downs
+                serverDropDown.SelectedIndex = -1;
+                guildTypeDropDown.SelectedIndex = -1;
+
+                //output a success message
+                outputBox.AppendText("New guild '" + guildName + "' successfully created!");
+
             }
-            else if (this.Class_Dropdown.SelectedIndex == -1)
+            //else we are missing needed info, so identify what is missing and print out message
+            else
             {
-                outputBox.Text = "Please choose a class for this new Player.";
+                if (guildNameBox.Text == "")
+                {
+                    outputBox.Text = "Please enter a name for the new guild!";
+                }
+                if (serverDropDown.SelectedIndex == -1)
+                {
+                    outputBox.Text = " Please pick a server for the guild!";
+                }
+                if (guildTypeDropDown.SelectedIndex == -1)
+                {
+                    outputBox.Text = "Please pick a type for the guild";
+                }
             }
-            else if (this.Role_Dropdown.SelectedIndex == -1)
-            {
-                outputBox.Text = "Please choose a role for this new Player.";
-            }
+            
         }
     }
 }
