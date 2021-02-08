@@ -15,19 +15,19 @@ namespace JennyCasey_Assign2
     {
         private Dictionary<uint, Player> playerDictionary;
         private Dictionary<uint, Guild> guildDictionary;
-        List<Player> players = new List<Player>();
-        List<Guild> guilds = new List<Guild>();
+
 
         public Form1()
         {
             InitializeComponent();
 
-            //create a new object and build the two dictionaries
+            //create a new player and guild object and build the two dictionaries
             Player newplayer = new Player();
             Guild newguild = new Guild();
             playerDictionary = newplayer.BuildPlayerDictionary();
             guildDictionary = newguild.BuildGuildDictionary();
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
       
