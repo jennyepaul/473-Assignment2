@@ -1,8 +1,15 @@
-﻿/* CSCI 473/504
+﻿/* CSCI473 
  * Assignment 2
+ * DATE: 2/9/2021
  * TEAM: JennyCasey
- * Contributers: Jennifer Paul (z1878099) and Casey McDermott (z1878096)
- */
+ * Contributors: Jennifer Paul (z1878099) and Casey McDermott (z1878096)
+ * PURPOSE: The purpose of this assignment is to emulate a game. The program will read in 
+ *          input files of  players.txt, and guilds.txt. From there, there 
+ *          will be 2 dictionaries made, one for the players, and one for the guilds. 
+ *          From there, the user can make various actions in the form, such as creating a 
+ *          new player, creating a new guild, disbanding a guild, searching for a guild/player
+ *          and so on. 
+ */ 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,26 +30,47 @@ namespace JennyCasey_Assign2
      * 
      * - There are two private attributes that are the dictionaries for the guilds and the players. 
      * - Form1 Class Methods: 
-     *             Form1 => 
+     *             Form1 => Constructor that initializes the component and then builds the guild & player dictionary
      *             Form1_Load => This method loads the "Race" and "Class" dropdowns under "Create New Player" with the appropriate
      *                           terms.
      *             SearchCriteriaButton_Click => This method checks which search box ("Search Player by Name" or "Search Guild
      *                                           by Server") the user has entered information into. Then, searches in either the
      *                                           guild dictionary or the player dictionary for matches. Finally, adds those matches
      *                                           to the appropriate list box to be viewed by the user. 
-     *             LeaveGuildButton_Click =>
-     *             JoinGuildButton_Click => 
-     *             clearSearchCriteria_Click =>
-     *             GuildRosterButton_Click =>
-     *             DisbandGuildButton_Click =>
-     *             playerListBox_DoubleClick =>
+     *                                           
+     *             LeaveGuildButton_Click => This method will have a player leave a guild, only if the user has clicked on a player
+     *                                       name from the player list box and then clicked the "Leave Guild" button
+     *                                       
+     *             JoinGuildButton_Click =>  This method has a player who has no guild association join a guild once the user clicks
+     *                                       on the player name from the listbox and a guild name they want to join from the guild
+     *                                       list box. If both are not selected, then there will be an error message displayed. 
+     *                                       
+     *             clearSearchCriteria_Click => This method will clear the search criteria that has been entered, so that all of the 
+     *                                          players and guilds are available to see, and the text area will be cleared, so the user
+     *                                          can start a new search when needed.
+     *                                          
+     *             GuildRosterButton_Click => This method will print the players that are part of the selected guild the user has 
+     *                                        selected. The output will be displayed (and formatted) in the "output" box. If no 
+     *                                        guild name has been selected from the listbox, there will be an error message out-
+     *                                        putted to the output box. 
+     *                                        
+     *             DisbandGuildButton_Click => This method will disband a guild that has been selected. Once the guild is 
+     *                                          selected and the button is pushed, the guild name will disappear from the listbox
+     *                                          and any player that had that guild associated with them will no longer have a guild.
+     *                                          
+     *             playerListBox_DoubleClick => This method will print the player info to the output box if a user double clicks on 
+     *                                          a player's name. 
+     *             
      *             Class_Dropdown_SelectedValueChanged => This method loads the "Role" dropdown under "Create New Player" with the 
      *                                                    appropriate roles, once the class has been selected for the class dropdown.
+     *                                               
      *             AddPlayer_Button_Click => This method first checks to makes sure there is text in the name box and all the 
      *                                       dropdowns in "Create New Player" have been selected. Then, it creates a new player 
      *                                       based on the criteria selected and assigns the player a unique id. Finally, it clears
      *                                       the textbox and the dropdowns and outputs a success message in the output text box. 
-     *             addGuildButton_Click=>
+     *                                       
+     *             addGuildButton_Click=> This method will add a guild to the listbox, and the guild dictionary once it is created.
+     *                                    To create the guild, the user needs to enter a name, and then pick a server and type of guild.
      * ************************************************************************************************************************/
     public partial class Form1 : Form
     {

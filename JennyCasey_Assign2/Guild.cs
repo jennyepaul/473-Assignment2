@@ -1,4 +1,16 @@
-﻿using System;
+﻿/* CSCI473 
+ * Assignment 2
+ * DATE: 2/9/2021
+ * TEAM: JennyCasey
+ * Contributors: Jennifer Paul (z1878099) and Casey McDermott (z1878096)
+ * PURPOSE: The purpose of this assignment is to emulate a game. The program will read in 
+ *          input files of  players.txt, and guilds.txt. From there, there 
+ *          will be 2 dictionaries made, one for the players, and one for the guilds. 
+ *          From there, the user can make various actions in the form, such as creating a 
+ *          new player, creating a new guild, disbanding a guild, searching for a guild/player
+ *          and so on. 
+ */ 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +20,21 @@ namespace JennyCasey_Assign2
 {
     public enum Type { Casual, Questing, Mythic, Raiding, PVP };
 
+
+    /**************************************************************************************************************************
+     * Class - Guild
+     * 
+     * The player class is used store the information of each individual guild. 
+     * 
+     * - There are 3 private attributes that stores information about each individual guild, such as the guild ID, name, and
+     *    server
+     * - The huild class has an IComparable interface in order to sort the guild based on its name.
+     * - Guild Class Methods: 
+     *            BuildGuildDictionary => This method reads in the guild.txt file and then parses the information for each
+     *                                    record into the class attributes, and then creates a new guild object, and adds
+     *                                    that object to the guild dictionary.
+     *            
+     * ************************************************************************************************************************/
     class Guild : IComparable
     {
         private uint id;

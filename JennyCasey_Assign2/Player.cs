@@ -1,4 +1,16 @@
-﻿using System;
+﻿/* CSCI473 
+ * Assignment 2
+ * DATE: 2/9/2021
+ * TEAM: JennyCasey
+ * Contributors: Jennifer Paul (z1878099) and Casey McDermott (z1878096)
+ * PURPOSE: The purpose of this assignment is to emulate a game. The program will read in 
+ *          input files of  players.txt, and guilds.txt. From there, there 
+ *          will be 2 dictionaries made, one for the players, and one for the guilds. 
+ *          From there, the user can make various actions in the form, such as creating a 
+ *          new player, creating a new guild, disbanding a guild, searching for a guild/player
+ *          and so on. 
+ */ 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -151,6 +163,7 @@ namespace JennyCasey_Assign2
             string playerRecord;
             var players = new Dictionary<uint, Player>();
 
+            //read the player file
             using (StreamReader inFile = new StreamReader("../../players.txt"))
             {
                 while ((playerRecord = inFile.ReadLine()) != null)
@@ -164,7 +177,7 @@ namespace JennyCasey_Assign2
 
                     string[] parameter = playerRecord.Split('\t');
 
-
+                    //grab all the info
                     uint.TryParse(parameter[0], out parsed_id);
                     Enum.TryParse(parameter[2], out parsed_race);
                     Enum.TryParse(parameter[3], out parsed_classes);
@@ -172,8 +185,10 @@ namespace JennyCasey_Assign2
                     uint.TryParse(parameter[5], out parsed_exp);
                     uint.TryParse(parameter[6], out parsed_guildID);
 
+                    //create a new player object
                     Player newPlayer = new Player(parsed_id, parameter[1], parsed_race, parsed_classes, parsed_level, parsed_exp, parsed_guildID);
 
+                    //add object to the dictionary
                     players.Add(parsed_id, newPlayer);
                 }
             }
@@ -211,7 +226,7 @@ namespace JennyCasey_Assign2
         {
             //checking for null values
             if (alpha == null) throw new ArgumentNullException();
-            //typecasting to an Item
+            //typecasting to a Player
             Player playerToCompare = alpha as Player;
             // Protect against a failed typecasting
             if (playerToCompare != null)
