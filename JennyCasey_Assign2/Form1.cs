@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* CSCI 473/504
+ * Assignment 2
+ * TEAM: JennyCasey
+ * Contributers: Jennifer Paul (z1878099) and Casey McDermott (z1878096)
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +16,34 @@ using System.IO;
 
 namespace JennyCasey_Assign2
 {
+    /**************************************************************************************************************************
+     * Class - Form1
+     * 
+     * The purpose of the Form1 class was to give functionality to the buttons on the form used for this assignment.
+     * 
+     * - There are two private attributes that are the dictionaries for the guilds and the players. 
+     * - Form1 Class Methods: 
+     *             Form1 => 
+     *             Form1_Load => This method loads the "Race" and "Class" dropdowns under "Create New Player" with the appropriate
+     *                           terms.
+     *             SearchCriteriaButton_Click => This method checks which search box ("Search Player by Name" or "Search Guild
+     *                                           by Server") the user has entered information into. Then, searches in either the
+     *                                           guild dictionary or the player dictionary for matches. Finally, adds those matches
+     *                                           to the appropriate list box to be viewed by the user. 
+     *             LeaveGuildButton_Click =>
+     *             JoinGuildButton_Click => 
+     *             clearSearchCriteria_Click =>
+     *             GuildRosterButton_Click =>
+     *             DisbandGuildButton_Click =>
+     *             playerListBox_DoubleClick =>
+     *             Class_Dropdown_SelectedValueChanged => This method loads the "Role" dropdown under "Create New Player" with the 
+     *                                                    appropriate roles, once the class has been selected for the class dropdown.
+     *             AddPlayer_Button_Click => This method first checks to makes sure there is text in the name box and all the 
+     *                                       dropdowns in "Create New Player" have been selected. Then, it creates a new player 
+     *                                       based on the criteria selected and assigns the player a unique id. Finally, it clears
+     *                                       the textbox and the dropdowns and outputs a success message in the output text box. 
+     *             addGuildButton_Click=>
+     * ************************************************************************************************************************/
     public partial class Form1 : Form
     {
         private Dictionary<uint, Player> playerDictionary;
