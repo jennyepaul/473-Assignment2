@@ -31,8 +31,7 @@ namespace JennyCasey_Assign2
      * - There are two private attributes that are the dictionaries for the guilds and the players. 
      * - Form1 Class Methods: 
      *             Form1 => Constructor that initializes the component and then builds the guild & player dictionary
-     *             Form1_Load => This method loads the "Race" and "Class" dropdowns under "Create New Player" with the appropriate
-     *                           terms.
+     *                      & loads the "Race" and "Class" dropdowns under "Create New Player" with the appropriate terms.
      *             SearchCriteriaButton_Click => This method checks which search box ("Search Player by Name" or "Search Guild
      *                                           by Server") the user has entered information into. Then, searches in either the
      *                                           guild dictionary or the player dictionary for matches. Finally, adds those matches
