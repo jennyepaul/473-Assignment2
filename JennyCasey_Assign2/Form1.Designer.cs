@@ -58,13 +58,13 @@ namespace JennyCasey_Assign2
             this.Name_Textbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.CreateGuildBox = new System.Windows.Forms.GroupBox();
-            this.guildNameBox = new System.Windows.Forms.TextBox();
-            this.guildNameLabel = new System.Windows.Forms.Label();
-            this.serverDropDown = new System.Windows.Forms.ComboBox();
-            this.guildTypeDropDown = new System.Windows.Forms.ComboBox();
-            this.serverLabel = new System.Windows.Forms.Label();
-            this.typeLabel = new System.Windows.Forms.Label();
             this.addGuildButton = new System.Windows.Forms.Button();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.serverLabel = new System.Windows.Forms.Label();
+            this.guildTypeDropDown = new System.Windows.Forms.ComboBox();
+            this.serverDropDown = new System.Windows.Forms.ComboBox();
+            this.guildNameLabel = new System.Windows.Forms.Label();
+            this.guildNameBox = new System.Windows.Forms.TextBox();
             this.ManagementFuncBox.SuspendLayout();
             this.CreatePlayerBox.SuspendLayout();
             this.CreateGuildBox.SuspendLayout();
@@ -86,6 +86,7 @@ namespace JennyCasey_Assign2
             this.outputBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outputBox.Location = new System.Drawing.Point(12, 518);
             this.outputBox.Name = "outputBox";
+            this.outputBox.ReadOnly = true;
             this.outputBox.Size = new System.Drawing.Size(1294, 159);
             this.outputBox.TabIndex = 1;
             this.outputBox.Text = "";
@@ -169,7 +170,7 @@ namespace JennyCasey_Assign2
             this.clearSearchCriteria.ForeColor = System.Drawing.Color.Black;
             this.clearSearchCriteria.Location = new System.Drawing.Point(384, 76);
             this.clearSearchCriteria.Name = "clearSearchCriteria";
-            this.clearSearchCriteria.Size = new System.Drawing.Size(160, 29);
+            this.clearSearchCriteria.Size = new System.Drawing.Size(171, 29);
             this.clearSearchCriteria.TabIndex = 9;
             this.clearSearchCriteria.Text = "Clear Search Critera";
             this.clearSearchCriteria.UseVisualStyleBackColor = false;
@@ -182,7 +183,7 @@ namespace JennyCasey_Assign2
             this.SearchCriteriaButton.ForeColor = System.Drawing.Color.Black;
             this.SearchCriteriaButton.Location = new System.Drawing.Point(384, 44);
             this.SearchCriteriaButton.Name = "SearchCriteriaButton";
-            this.SearchCriteriaButton.Size = new System.Drawing.Size(160, 25);
+            this.SearchCriteriaButton.Size = new System.Drawing.Size(171, 26);
             this.SearchCriteriaButton.TabIndex = 4;
             this.SearchCriteriaButton.Text = "Apply Search Criteria";
             this.SearchCriteriaButton.UseVisualStyleBackColor = false;
@@ -403,53 +404,17 @@ namespace JennyCasey_Assign2
             this.CreateGuildBox.TabStop = false;
             this.CreateGuildBox.Text = "Create New Guild";
             // 
-            // guildNameBox
+            // addGuildButton
             // 
-            this.guildNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guildNameBox.Location = new System.Drawing.Point(13, 43);
-            this.guildNameBox.Name = "guildNameBox";
-            this.guildNameBox.Size = new System.Drawing.Size(192, 27);
-            this.guildNameBox.TabIndex = 0;
-            // 
-            // guildNameLabel
-            // 
-            this.guildNameLabel.AutoSize = true;
-            this.guildNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guildNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.guildNameLabel.Location = new System.Drawing.Point(13, 23);
-            this.guildNameLabel.Name = "guildNameLabel";
-            this.guildNameLabel.Size = new System.Drawing.Size(90, 18);
-            this.guildNameLabel.TabIndex = 1;
-            this.guildNameLabel.Text = "Guild Name ";
-            // 
-            // serverDropDown
-            // 
-            this.serverDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverDropDown.FormattingEnabled = true;
-            this.serverDropDown.Location = new System.Drawing.Point(251, 43);
-            this.serverDropDown.Name = "serverDropDown";
-            this.serverDropDown.Size = new System.Drawing.Size(192, 28);
-            this.serverDropDown.TabIndex = 2;
-            // 
-            // guildTypeDropDown
-            // 
-            this.guildTypeDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guildTypeDropDown.FormattingEnabled = true;
-            this.guildTypeDropDown.Location = new System.Drawing.Point(251, 94);
-            this.guildTypeDropDown.Name = "guildTypeDropDown";
-            this.guildTypeDropDown.Size = new System.Drawing.Size(192, 28);
-            this.guildTypeDropDown.TabIndex = 3;
-            // 
-            // serverLabel
-            // 
-            this.serverLabel.AutoSize = true;
-            this.serverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverLabel.ForeColor = System.Drawing.Color.Black;
-            this.serverLabel.Location = new System.Drawing.Point(251, 23);
-            this.serverLabel.Name = "serverLabel";
-            this.serverLabel.Size = new System.Drawing.Size(51, 18);
-            this.serverLabel.TabIndex = 4;
-            this.serverLabel.Text = "Server";
+            this.addGuildButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addGuildButton.ForeColor = System.Drawing.Color.Black;
+            this.addGuildButton.Location = new System.Drawing.Point(482, 43);
+            this.addGuildButton.Name = "addGuildButton";
+            this.addGuildButton.Size = new System.Drawing.Size(94, 23);
+            this.addGuildButton.TabIndex = 6;
+            this.addGuildButton.Text = "Add Guild";
+            this.addGuildButton.UseVisualStyleBackColor = true;
+            this.addGuildButton.Click += new System.EventHandler(this.addGuildButton_Click);
             // 
             // typeLabel
             // 
@@ -462,17 +427,53 @@ namespace JennyCasey_Assign2
             this.typeLabel.TabIndex = 5;
             this.typeLabel.Text = "Type";
             // 
-            // addGuildButton
+            // serverLabel
             // 
-            this.addGuildButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addGuildButton.ForeColor = System.Drawing.Color.Black;
-            this.addGuildButton.Location = new System.Drawing.Point(482, 43);
-            this.addGuildButton.Name = "addGuildButton";
-            this.addGuildButton.Size = new System.Drawing.Size(94, 23);
-            this.addGuildButton.TabIndex = 6;
-            this.addGuildButton.Text = "Add Guild";
-            this.addGuildButton.UseVisualStyleBackColor = true;
-            this.addGuildButton.Click += new System.EventHandler(this.addGuildButton_Click);
+            this.serverLabel.AutoSize = true;
+            this.serverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverLabel.ForeColor = System.Drawing.Color.Black;
+            this.serverLabel.Location = new System.Drawing.Point(251, 23);
+            this.serverLabel.Name = "serverLabel";
+            this.serverLabel.Size = new System.Drawing.Size(51, 18);
+            this.serverLabel.TabIndex = 4;
+            this.serverLabel.Text = "Server";
+            // 
+            // guildTypeDropDown
+            // 
+            this.guildTypeDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guildTypeDropDown.FormattingEnabled = true;
+            this.guildTypeDropDown.Location = new System.Drawing.Point(251, 94);
+            this.guildTypeDropDown.Name = "guildTypeDropDown";
+            this.guildTypeDropDown.Size = new System.Drawing.Size(192, 28);
+            this.guildTypeDropDown.TabIndex = 3;
+            // 
+            // serverDropDown
+            // 
+            this.serverDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverDropDown.FormattingEnabled = true;
+            this.serverDropDown.Location = new System.Drawing.Point(251, 43);
+            this.serverDropDown.Name = "serverDropDown";
+            this.serverDropDown.Size = new System.Drawing.Size(192, 28);
+            this.serverDropDown.TabIndex = 2;
+            // 
+            // guildNameLabel
+            // 
+            this.guildNameLabel.AutoSize = true;
+            this.guildNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guildNameLabel.ForeColor = System.Drawing.Color.Black;
+            this.guildNameLabel.Location = new System.Drawing.Point(13, 23);
+            this.guildNameLabel.Name = "guildNameLabel";
+            this.guildNameLabel.Size = new System.Drawing.Size(90, 18);
+            this.guildNameLabel.TabIndex = 1;
+            this.guildNameLabel.Text = "Guild Name ";
+            // 
+            // guildNameBox
+            // 
+            this.guildNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guildNameBox.Location = new System.Drawing.Point(13, 43);
+            this.guildNameBox.Name = "guildNameBox";
+            this.guildNameBox.Size = new System.Drawing.Size(192, 27);
+            this.guildNameBox.TabIndex = 0;
             // 
             // Form1
             // 
@@ -492,7 +493,7 @@ namespace JennyCasey_Assign2
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "World of ConflictCraft";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ManagementFuncBox.ResumeLayout(false);
             this.ManagementFuncBox.PerformLayout();
