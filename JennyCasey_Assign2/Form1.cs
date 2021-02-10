@@ -87,11 +87,6 @@ namespace JennyCasey_Assign2
             Guild newguild = new Guild();
             playerDictionary = newplayer.BuildPlayerDictionary();
             guildDictionary = newguild.BuildGuildDictionary();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-      
             //populate the playerListBox and guildListBox
             foreach (var i in playerDictionary)
             {
