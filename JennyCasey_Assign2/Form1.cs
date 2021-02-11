@@ -86,11 +86,15 @@ namespace JennyCasey_Assign2
             Guild newguild = new Guild();
             playerDictionary = newplayer.BuildPlayerDictionary();
             guildDictionary = newguild.BuildGuildDictionary();
+           
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
             //populate the playerListBox and guildListBox
             foreach (var i in playerDictionary)
             {
                 playerListBox.Items.Add(i.Value);
-
                 //make sure the items in the dropdown do not repeat
                 if (!Race_Dropdown.Items.Contains(i.Value.Race))
                 {
@@ -106,28 +110,25 @@ namespace JennyCasey_Assign2
             {
                 guildListBox.Items.Add(m.Value);
             }
-
             //sort the list boxes
             playerListBox.Sorted = true;
             guildListBox.Sorted = true;
-
             //set up everything to get ready to add a new guild
             serverDropDown.Items.Add("Beta4Azeroth");
             serverDropDown.Items.Add("TKWasASetback");
             serverDropDown.Items.Add("ZappyBoi");
-
             guildTypeDropDown.Items.Add(Type.Casual);
             guildTypeDropDown.Items.Add(Type.Mythic);
             guildTypeDropDown.Items.Add(Type.PVP);
             guildTypeDropDown.Items.Add(Type.Questing);
             guildTypeDropDown.Items.Add(Type.Raiding);
-
         }
         private void SearchCriteriaButton_Click(object sender, EventArgs e)
         {
             //clear both the list boxes, so we can repopulate
             guildListBox.Items.Clear();
             playerListBox.Items.Clear();
+            
 
             //********************************
             //GUILD TEXT BOX SEARCH CRITERA
@@ -163,7 +164,6 @@ namespace JennyCasey_Assign2
             //if user has entered something into the text box, let's filter
             if (!string.IsNullOrEmpty(searchPlayerTextbox.Text))
             {
-                //clear the player list box
                 foreach (var name in playerDictionary)
                 {
                     //add the ones that match the criteria back in
@@ -229,13 +229,21 @@ namespace JennyCasey_Assign2
             }
             else
             {
-                string playerName = ((Player)playerListBox.SelectedItem).Name;
-                uint id = ((Guild)guildListBox.SelectedItem).ID;
+                //adding in check to see if player is in a guild, if so output that to output box
+                if (((Player)playerListBox.SelectedItem).GuildID != 0) 
+                {
+                    outputBox.Text = "Player already in a guild!";
+                }
+                else
+                {
+                    string playerName = ((Player)playerListBox.SelectedItem).Name;
+                    uint id = ((Guild)guildListBox.SelectedItem).ID;
 
 
-                //pass the player dictionary, player name, and guildID to function to join a guild
-                player1.PlayerJoinGuild(playerDictionary, playerName, id);
-                outputBox.Text = "Player successfully joined the guild!";
+                    //pass the player dictionary, player name, and guildID to function to join a guild
+                    player1.PlayerJoinGuild(playerDictionary, playerName, id);
+                    outputBox.Text = "Player successfully joined the guild!";
+                }
             }
 
             //reset the player selected index and guild selected index
@@ -249,8 +257,9 @@ namespace JennyCasey_Assign2
             playerListBox.Items.Clear();
 
             //reset the textbox
-            searchPlayerTextbox.Text = " ";
-            searchGuildTextBox.Text = " ";
+            searchPlayerTextbox.Clear();
+            searchGuildTextBox.Clear();
+
             //repopulate playerListBox
             foreach (var player in playerDictionary)
             {

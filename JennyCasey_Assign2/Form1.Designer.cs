@@ -494,6 +494,7 @@ namespace JennyCasey_Assign2
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "World of ConflictCraft";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ManagementFuncBox.ResumeLayout(false);
             this.ManagementFuncBox.PerformLayout();
             this.CreatePlayerBox.ResumeLayout(false);
